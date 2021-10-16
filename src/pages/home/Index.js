@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import Slider from './Slider'
 import Banner from './Banner'
 import Display from './Display'
+import BlogDisplay from './BlogDisplay'
 
 const Index = () => {
     const [sliderPics] = useState(
@@ -121,12 +122,37 @@ const Index = () => {
         }
     ])
 
+    const [blogs] = useState([
+        {
+            author:"Tom",
+            img:"/assests/images/blog-01.jpg",
+            createdAt:"July 22, 2017 ",
+            title:"8 Inspiring Ways to Wear Dresses in the Winter",
+            content:"Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames;Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames.Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames"
+        },
+        {
+            author:"Carrei",
+            img:"/assests/images/blog-02.jpg",
+            createdAt:"Mon 15, 2018 ",
+            title:"8 Inspiring Ways to Wear Dresses in the Winter",
+            content:"Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames;Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames.Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames"
+        },
+        {
+            author:"Sally",
+            img:"/assests/images/blog-03.jpg",
+            createdAt:"Thu 23, 2017 ",
+            title:"8 Inspiring Ways to Wear Dresses in the Winter",
+            content:"Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames;Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames.Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames"
+        }
+    ])
+
     return (
         <div>
             <Header/>
             <Slider sliderPics={sliderPics}/>
             <Banner banners={banners}/>
             <Display displays={displays}/>
+            <BlogDisplay blogs={blogs}/>
         </div>
     )
 }
