@@ -1,0 +1,40 @@
+
+
+.item-slick {
+    height: calc(100vh - 40px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+  }
+
+.item-slick-male{
+    font-family: PlayfairDisplay-Regular;
+    line-height: 1.2857;
+    color:grayscale;
+    font-size:3rem
+}
+.item-slick-category{ 
+    font-family: PlayfairDisplay-Regular;
+    line-height: 1.2857;
+    color:rgba(24, 8, 8, 0.472);
+    font-size:5rem
+}
+
+.item-slick-shop{
+  font-family: Poppins-Medium;
+  font-size: 1.5rem;
+  line-height: 1.466667;
+  text-transform: uppercase;
+  color: #fff;
+  min-width: 161px;
+  height: 46px;
+  background-color: #717fe0;
+  border-radius: 2rem;
+  padding:1rem 3rem;
+  text-decoration: none;
+}
+
+.item-slick-shop:hover{
+    background-color:rgba(117, 153, 170, 0.452)
+}
