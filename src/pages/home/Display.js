@@ -23,20 +23,20 @@ const TabsTitle = ({displays,setActiveName})=>{
 const TabDisplay = ({displayContent})=>{
     return(
            
-                <div className=" col-3 " >
-                    <div className="display-tab-div">
-                        <img src={displayContent.img} className="w-100" ></img>
-                        <div className="d-flex justify-content-between mt-2">
-                        <span className="display-tab-img-intro">{displayContent.intro}</span>
-                            <i className="bi-heart display-tab-img-icon" ></i>
-                        </div>
+        <div className=" col-lg-3 col-md-6" >
+            <div className="display-tab-div">
+                <img src={displayContent.img} className="w-100" ></img>
+                <div className="d-flex justify-content-between mt-2">
+                <span className="display-tab-img-intro">{displayContent.intro}</span>
+                    <i className="bi-heart display-tab-img-icon" ></i>
+                </div>
 
-                        <div className="d-flex">
-                            <span className="display-tab-img-price ">{`$${displayContent.price}`}</span>
-                        </div>
-                    
-                    </div>
-                </div>             
+                <div className="d-flex">
+                    <span className="display-tab-img-price ">{`$${displayContent.price}`}</span>
+                </div>
+            
+            </div>
+        </div>             
         
     )
 }
@@ -48,8 +48,8 @@ const TabContents = ({displays,activeName}) =>{
         const num =Math.ceil( displayContents.length/4);
         var indents = [];
         for(let i = 0;i<num;i++){
-            indents.push( <div className={`carousel-item  ${i==0 && 'active'}` }>
-                    <div className='d-flex'>
+            indents.push( <div className={`carousel-item  ${i==0 && 'active'} ` }>
+                    <div className='row'>
                         {displayContents.slice(i*4,(i+1)*4).map((displayContent,index)=>
                                             //one display
                                             <TabDisplay displayContent={displayContent}/>
@@ -78,14 +78,10 @@ const TabContents = ({displays,activeName}) =>{
                         <button className="carousel-control-next" type="button" data-bs-target={`#carousel${index}`} data-bs-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Next</span>
-                        </button>
-                           
+                        </button> 
                     </div>
-                   
                 </div>
             </div>
-       
-        
         )
     )
 }
