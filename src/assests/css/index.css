@@ -1,5 +1,26 @@
+/*
+ 根css文件，其他css文件会引用到的通用样式
+ */
+:root {
+overflow-y: auto;
+overflow-x: hidden;
+}
+
+:root body {
+position: absolute;
+}
+
+body {
+width: 100vw;
+/* overflow: hidden; */
+}
+
 a{
     cursor:pointer
+}
+
+.f-title{
+    font-size:2rem;
 }
 
 .hov-cl1:hover {color: #717fe0;}
