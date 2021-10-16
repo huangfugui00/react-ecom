@@ -69,6 +69,42 @@ const Index = () => {
             ]
         },
         {
+            displayName:"Top Rate",
+            displayContents:[
+                {
+                    img:"/assests/images/product-11.jpg",
+                    intro: "Esprit Ruffle Shirt",
+                    price:"16.64",
+                },
+                {
+                    img:"/assests/images/product-12.jpg",
+                    intro: "Herschel supply",
+                    price:"35.31",
+                },
+                {
+                    img:"/assests/images/product-13.jpg",
+                    intro: "Herschel supply",
+                    price:"24.23",
+                },
+                {
+                    img:"/assests/images/product-16.jpg",
+                    intro: "Herschel supply",
+                    price:"24.23",
+                },
+                {
+                    img:"/assests/images/product-14.jpg",
+                    intro: "Herschel supply",
+                    price:"21.23",
+                },
+                {
+                    img:"/assests/images/product-15.jpg",
+                    intro: "Herschel supply",
+                    price:"1.23",
+                },
+                
+            ]
+        },
+        {
             displayName:"Man",
             displayContents:[
                 {

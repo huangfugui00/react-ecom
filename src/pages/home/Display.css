@@ -1,3 +1,12 @@
+.display{
+    padding-top: 8rem;
+}
+
+.display-ui{
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
 .display-title{
     font-size:4rem;
     color:rgba(0, 0, 0, 0.61);

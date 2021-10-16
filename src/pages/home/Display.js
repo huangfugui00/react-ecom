@@ -5,7 +5,7 @@ import './Display.css'
 
 const TabsTitle = ({displays,setActiveName})=>{
     return(
-        <ul className="nav justify-content-center">
+        <ul className="nav justify-content-center display-ui">
             {displays.map((display,index)=>
                     <li key={index} className="nav-item ">
                         {/* <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target={`#${display.displayName}`} type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button> */}
@@ -66,16 +66,16 @@ const TabContents = ({displays,activeName}) =>{
         displays.map ((display,index)=>
             <div className={`tab-pane fade show ${display.displayName==activeName && 'active' }`} id={display.displayName} role="tabpanel">
                 <div className="display-tab m-auto "  key={index}>
-                    <div id="carousel" className="carousel slide" data-ride="carousel">
+                    <div id={`carousel${index}`} className="carousel slide" data-ride="carousel">
                          {/* //one Tab */}
                          <div className="carousel-inner">
                             {carousels(display.displayContents)}
                          </div>
-                         <button className="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                         <button className="carousel-control-prev" type="button" data-bs-target={`#carousel${index}`} data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Previous</span>
                         </button>
-                        <button className="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <button className="carousel-control-next" type="button" data-bs-target={`#carousel${index}`} data-bs-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Next</span>
                         </button>
@@ -93,14 +93,13 @@ const TabContents = ({displays,activeName}) =>{
 
 
 const Display = ({displays}) => {
-
     const [activeName,setActiveName] = useState('')
     useEffect(() => {
         setActiveName(displays[0].displayName)
       },[])
 
     return (
-        <div className="text-center p-t-50 sec-product">
+        <div className="text-center display">
             <h2 className="display-title">Store Overview</h2>           
             <TabsTitle displays={displays} setActiveName={setActiveName}/> 
             <div className="tab-content">
