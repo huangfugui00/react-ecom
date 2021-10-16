@@ -1,5 +1,5 @@
 import {useState,useEffect} from 'react'
-import './Display.css'
+import './Display.scss'
 
 // nav bar 
 
@@ -23,11 +23,17 @@ const TabsTitle = ({displays,setActiveName})=>{
 const TabDisplay = ({displayContent})=>{
     return(
            
-        <div className=" col-lg-3 col-md-6" >
+        <div className=" col-xl-3 col-md-6" >
             <div className="display-tab-div">
-                <img src={displayContent.img} className="w-100" ></img>
+                <div className="display-tab-image d-flex flex-columm justify-content-center">
+                    <img src={displayContent.img} className="w-100" ></img>  
+                    <a href="#" className="">
+                        Quick View
+                    </a>
+                </div>
+                
                 <div className="d-flex justify-content-between mt-2">
-                <span className="display-tab-img-intro">{displayContent.intro}</span>
+                <span className="display-tab-img-intro"><a>{displayContent.intro}</a></span>
                     <i className="bi-heart display-tab-img-icon" ></i>
                 </div>
 
@@ -75,7 +81,7 @@ const TabContents = ({displays,activeName}) =>{
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Previous</span>
                         </button>
-                        <button className="carousel-control-next" type="button" data-bs-target={`#carousel${index}`} data-bs-slide="next">
+                        <button className="carousel-control-next " type="button" data-bs-target={`#carousel${index}`} data-bs-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="visually-hidden">Next</span>
                         </button> 
