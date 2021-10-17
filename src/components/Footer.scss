@@ -1,11 +1,87 @@
 @import '../assests/css/index';//导入其他css文件
 
-.Footer{
-    background-color: black;
-    padding:10rem 0;
-    color:white;
+.footer{
+    h4{
+        font-weight: bold;
+        color:white;
+    }
+    background-color: rgba(0, 0, 0, 0.897);
+    padding:6rem 0;
+  
     .main{
         @extend .my-container;
-        
+    }
+}
+
+.categories{
+
+    ul{
+        list-style-type: none;
+        margin: 3rem 0;
+        padding: 0;
+        li{
+            font-size:1.2rem;
+            padding-top:1rem;
+            color:gray;
+            &:hover{
+                color:white;
+            }
+        }
+    }
+}
+
+.help{
+   @extend .categories;
+}
+
+.touch{
+
+    p{
+        margin:3rem 0;
+        padding-top: 1rem;
+        font-size:1.2rem;
+    }
+    ul{
+        list-style-type: none;
+        margin:  0;
+        padding: 0;
+        display: flex;
+        li{
+            font-size:1.5rem;
+            margin-right: 2rem;
+            &:hover{
+                color:white;
+                cursor:pointer;
+            }
+        }
+    }
+}
+
+.newsletter{
+    input{
+        margin:3rem 0;
+        padding: 1rem 0 0.5rem 0 ;
+        font-size:1.2rem;
+        border-bottom:2px solid grey;
+        width:100%;
+        background-color: transparent;
+        color:gray;
+        transition: border-color 1s ease-in-out;
+        &:focus{
+            border-color: rebeccapurple;
+        }
+    }
+    button{
+        color:white;
+        font-size:1.5rem;
+        padding:1rem 3rem;
+        background-color: blueviolet;
+        border-radius: 2rem;
+        transition: background-color  1s ease-in-out;
+        // transition: color  1s ease-in-out;
+        &:hover{
+            background-color: white;
+            color:blueviolet;
+        }
     }
 }

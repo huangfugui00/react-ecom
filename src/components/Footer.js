@@ -4,7 +4,7 @@ import './Footer.scss'
 
 const Categories = ()=>{
     return(
-        <div className="Category col-xl-3 col-md-6">
+        <div className="categories col-xl-3 col-md-6">
             <h4>CATEGORIES</h4>
             <ul>
                 <li>
@@ -27,7 +27,7 @@ const Categories = ()=>{
 
 const Help = ()=>{
     return(
-        <div className="Help col-xl-3 col-md-6">
+        <div className="help col-xl-3 col-md-6">
             <h4>HELP</h4>
             <ul>
                 <li>
@@ -50,7 +50,7 @@ const Help = ()=>{
 
 const Touch = ({contact})=>{
     return(
-        <div className="Touch col-xl-3 col-md-6">
+        <div className="touch col-xl-3 col-md-6">
             <h4>GET IN TOUCH</h4>
             <p>Any questions?Let us know in store at {contact.address} or call us at {contact.phone}</p>
             <ul>
@@ -71,11 +71,11 @@ const Touch = ({contact})=>{
 
 const Newsletter = ()=>{
     return(
-        <div className="Newsletter col-xl-3 col-md-6">
+        <div className="newsletter col-xl-3 col-md-6">
              <h4>NEWSLETTER</h4>
              <form>
-                <div className="wrap-input1 w-full p-b-4">
-                    <input  type="text" name="email" placeholder="email@example.com"/>
+                <div className="">
+                    <input className=""   name="email" placeholder="email@example.com"/>
                     <button>
                         Subscribe
                     </button>
@@ -88,7 +88,7 @@ const Newsletter = ()=>{
 
 const Footer = ({contact}) => {
     return (
-        <div className="Footer">
+        <div className="footer">
             <div className="main row">
                 <Categories /> 
                 <Help/>
