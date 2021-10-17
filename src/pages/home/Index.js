@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import Header from '../../components/Header'
 import Slider from './Slider'
 import Banner from './Banner'
 import Display from './Display'
 import BlogDisplay from './BlogDisplay'
-import Footer from '../../components/Footer'
+
 const Index = () => {
     const [sliderPics] = useState(
         [{
@@ -146,20 +145,13 @@ const Index = () => {
         }
     ])
 
-    const [contact] = useState(
-        {
-            phone:"123456",
-            address:"广州市番禺区"
-        }
-    )
+   
     return (
         <div>
-            <Header/>
             <Slider sliderPics={sliderPics}/>
             <Banner banners={banners}/>
             <Display displays={displays}/>
             <BlogDisplay blogs={blogs}/>
-            <Footer contact={contact}/>
         </div>
     )
 }

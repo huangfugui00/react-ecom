@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
 import './assests/css/index.scss'
 import './assests/css/main.css'
 import './assests/css/util.css'
