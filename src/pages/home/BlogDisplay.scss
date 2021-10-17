@@ -1,11 +1,9 @@
-@import '../../assests/css/index';//导入其他css文件
+@import '../../assests/css/index.scss';//导入其他css文件
 
 .main{
     width:calc(60% + 450px);
     max-width:95%;
-    // margin:8rem auto 5rem auto;
     margin:8rem auto;
-    // padding:0 2rem;
     
     h1{
         text-align: center;
@@ -18,8 +16,7 @@
 
 .blog-div{
     max-width: 100%;
-    margin:auto;
-    overflow: hidden;
+    @extend .my-transition-img;
     p{
         margin:1rem 0;
         font-size:1.2rem;
@@ -29,15 +26,7 @@
         // @extend .f-title;
         font-weight: bold;
     }
-    img{
-        transition: transform 0.9s ;
-        margin:2rem 0 ;
-    }
-    &:hover{
-        img{
-            transform: scale(1.05);     
-        }
-    }
+   
 
     #blog-content{
       

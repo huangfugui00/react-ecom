@@ -10,9 +10,7 @@ const BlogDiv = ({blog}) =>{
             <div className="" id="blog-content">
                 {blog.content}
             </div>
-        </div>
-   
-       
+        </div>  
     )
 }
 

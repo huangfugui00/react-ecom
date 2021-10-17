@@ -1,3 +1,6 @@
+@import '../../assests/css/index.scss';//导入其他css文件
+
+
 .display{
     padding-top: 8rem;
 }
@@ -34,12 +37,7 @@
 }
 
 .display-tab-image{
-    display: block;
-    overflow: hidden;
-
-    img{
-        transition: transform 0.9s ease;
-    }
+    @extend .my-transition-img;
 
     a{
         position: absolute;
@@ -59,9 +57,6 @@
    
 
     &:hover{
-        img{
-            transform: scale(1.1);     
-        }
         a{
             bottom:100px;
         }

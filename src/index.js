@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
-import './assests/css/index.css'
+import './assests/css/index.scss'
 import './assests/css/main.css'
 import './assests/css/util.css'
 import './assests/fonts/font-awesome-4.7.0/css/font-awesome.min.css'

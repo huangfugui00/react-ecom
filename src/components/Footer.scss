@@ -1,0 +1,11 @@
+@import '../assests/css/index';//导入其他css文件
+
+.Footer{
+    background-color: black;
+    padding:10rem 0;
+    color:white;
+    .main{
+        @extend .my-container;
+        
+    }
+}

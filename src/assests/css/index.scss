@@ -23,6 +23,9 @@ a{
     font-size:2rem;
 }
 
+
+
+
 .hov-cl1:hover {color: #717fe0;}
 .border{
     border: 0.5rem outset pink;
@@ -33,6 +36,12 @@ a{
   margin: 2rem;
   padding: 1rem;
   outline-offset: 0.5rem;
+}
+
+.my-container{
+    width:calc(60% + 500px);
+    max-width:100%;
+    margin:auto;
 }
 
 .my-border{
@@ -48,6 +57,20 @@ a{
     padding: 0 calc(20% - 100px);
 }
 
+
+.my-transition-img{
+    display: block;
+    overflow: hidden;
+    img{
+        transition: transform 0.9s ease;
+    }
+    &:hover{
+        img{
+            transform: scale(1.1);     
+        }
+    }
+   
+}
 
 .my-padding-left{
     padding-left: calc(20% - 100px);
