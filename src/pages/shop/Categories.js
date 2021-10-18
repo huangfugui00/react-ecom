@@ -1,12 +1,11 @@
-import React from 'react'
 import './Categories.scss'
 
 const Categories = ({categories}) => {
     return (
-        <div className='categories '>                     
+        <div className='shop-categories '>                     
             <ul className='row'>
                 <li className='col'>
-                    All
+                    <a>All</a>
                 </li>
                 {
                     categories.map((category,index)=>
@@ -15,9 +14,6 @@ const Categories = ({categories}) => {
                         </li>
                     )
                 }
-                <li>
-
-                </li>
             </ul>                 
         </div>
     )

@@ -8,7 +8,7 @@ const Header = () => {
                 <nav className="row navbar navbar-expand-lg ">
                     {/* icon name */}
                     <div className="col-1">
-                        <a href="#" className="brand " >
+                        <a href="/" className="brand " >
                             <img src={defaultAvatar} alt="IMG-LOGO"  />
                         </a>
                     </div>

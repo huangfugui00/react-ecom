@@ -1,3 +1,23 @@
+@import '../../assests/css/index.scss';//导入其他css文件
+
 .TagButton{
-    margin:auto 0;
+    margin:auto 0;    
+}
+
+.tagButton-filter{ 
+    font-size:1.2rem;
+    color:rgba(128, 128, 128, 0.72);
+    border:1px solid gray;
+    border-radius: 5px;
+    padding:0.5rem 1rem ;
+    &:hover{
+        // background-color:rgba(103,117,214,0.8);;
+        @extend .my-button-bg-color;
+        color:white;
+    }
+}
+
+.tagButton-search{ 
+    @extend .tagButton-filter;
+  
 }

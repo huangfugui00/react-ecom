@@ -10,9 +10,9 @@ const Shop = ({products}) => {
         <div className="shop">
             <hr/>
             <div className="shop-content">
-                <div className="nav-category-tag d-flex justify-content-between">
+                <div className="shop-category-tag d-flex justify-content-between">
                     <Categories categories={categories}/>
-                    <TagButtonW/>
+                    <TagButton/>
                 </div>  
             </div>    
         </div>  

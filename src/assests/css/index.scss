@@ -6,6 +6,11 @@ overflow-y: auto;
 overflow-x: hidden;
 }
 
+:root{
+    --btn-bg-color: rgba(103,117,214,0.8);
+}
+
+
 :root body {
 position: absolute;
 }
@@ -55,6 +60,9 @@ a{
 
 .my-padding-x{
     padding: 0 calc(20% - 100px);
+}
+.my-button-bg-color{
+    background-color: rgba(103,117,214,0.8);
 }
 
 

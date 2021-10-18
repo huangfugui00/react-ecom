@@ -1,9 +1,20 @@
 @import '../../assests/css/index.scss';//导入其他css文件
 
-.categories{
+.shop-categories{
+    margin:auto 0;
     ul{
         list-style-type: none;
         margin: 0;
         padding: 0;
+        li{
+            font-size:1.5rem;
+            color:rgba(128, 128, 128, 0.72);
+            &:hover{
+                color:black;
+                text-decoration: underline;
+            }
+        }
+     
+       
     }
 }
