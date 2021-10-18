@@ -1,0 +1,5 @@
+@import '../../assests/css/index.scss';//导入其他css文件
+
+.shop-content{
+    @extend .my-container ;
+}

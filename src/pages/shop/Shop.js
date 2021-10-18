@@ -1,9 +1,21 @@
 import React from 'react'
+import Categories from './Categories'
+import TagButton from './TagButton'
+import './Shop.scss'
 
-const Shop = () => {
+
+const Shop = ({products}) => {
+    const categories =[...new Set(products.map((product) =>product.category))]
     return (
-        // <Header/>
-        <h1>hello world</h1>
+        <div className="shop">
+            <hr/>
+            <div className="shop-content">
+                <div className="nav-category-tag d-flex justify-content-between">
+                    <Categories categories={categories}/>
+                    <TagButton/>
+                </div>  
+            </div>    
+        </div>  
     )
 }
 

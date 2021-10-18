@@ -1,5 +1,5 @@
 import defaultAvatar from '../assests/images/icons/logo-01.png'
-import './Header.css';
+import './Header.scss';
 
 const Header = () => {
     return (
@@ -19,7 +19,7 @@ const Header = () => {
                        
                         <ul className="row">
                             <li className="col ">
-                                <a className='a-header-item' href="product.html">Shop</a>
+                                <a className='a-header-item' href="/shop">Shop</a>
                             </li>
 
                             <li  className="col"  data-label1="hot">
