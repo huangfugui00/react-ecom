@@ -1,6 +1,7 @@
 import React from 'react'
 import Categories from './Categories'
 import TagButton from './TagButton'
+import Search from './Search'
 import './Shop.scss'
 
 
@@ -14,6 +15,7 @@ const Shop = ({products}) => {
                     <Categories categories={categories}/>
                     <TagButton/>
                 </div>  
+                <Search/>
             </div>    
         </div>  
     )
