@@ -3,14 +3,14 @@ import './Categories.scss'
 
 const Categories = ({categories}) => {
     return (
-        <div className={categories}>                     
-            <ul >
-                <li >
-                    <a onClick={()=>alert(1)}>All Products</a>
+        <div className='categories '>                     
+            <ul className='row'>
+                <li className='col'>
+                    All
                 </li>
                 {
                     categories.map((category,index)=>
-                        <li key={index}> 
+                        <li className='col' key={index}> 
                             <a>{category}</a>
                         </li>
                     )

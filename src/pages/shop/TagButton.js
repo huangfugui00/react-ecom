@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './TagButton.scss'
 const TagButton = () => {
     return (
         <div className="TagButton">

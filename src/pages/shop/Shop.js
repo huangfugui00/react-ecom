@@ -12,7 +12,7 @@ const Shop = ({products}) => {
             <div className="shop-content">
                 <div className="nav-category-tag d-flex justify-content-between">
                     <Categories categories={categories}/>
-                    <TagButton/>
+                    <TagButtonW/>
                 </div>  
             </div>    
         </div>  
