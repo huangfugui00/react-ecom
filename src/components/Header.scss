@@ -1,4 +1,4 @@
-@import '../assests/css/index.scss';
+@import '../assests/css/index';//导入其他css文件
 
 
 .container-header{
@@ -7,16 +7,39 @@
 }
 
 .brand{
-    min-height: 3rem
+    min-height: 1.2rem;   
+
 }
 
-.icon-header-item {
-    position: relative;
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
-  }
-  
+
+#navbarsHeader{
+    ul {
+        list-style: none;
+        margin: auto 0;
+        font-size: 1.2rem;
+        li{
+            a{
+                text-decoration: none;
+                color:var(--nav-item-color);
+                &:hover{
+                    color: var(--btn-bg-color);
+                }
+            }
+
+
+        }
+    }
+}
+
+#iconHeader{
+    i{
+        font-size:1.5rem;
+        &:hover{
+            color: var(--btn-bg-color);
+            cursor: pointer;
+        }
+    }
+}
 
 .a-header-item {
     color: rgba(29, 18, 18, 0.397);

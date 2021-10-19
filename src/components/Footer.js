@@ -75,7 +75,7 @@ const Newsletter = ()=>{
              <h4>NEWSLETTER</h4>
              <form>
                 <div className="">
-                    <input className=""   name="email" placeholder="email@example.com"/>
+                    <input  name="email" placeholder="email@example.com"/>
                     <button>
                         Subscribe
                     </button>

@@ -8,6 +8,7 @@ overflow-x: hidden;
 
 :root{
     --btn-bg-color: rgba(103,117,214,0.8);
+    --nav-item-color: #333;
 }
 
 
@@ -27,6 +28,14 @@ width: 100vw;
 .f-title{
     font-size:2rem;
 }
+
+
+input, textarea, label {
+	display: block;
+	outline: none;
+	border: none;
+}
+
 
 
 

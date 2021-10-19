@@ -8,7 +8,6 @@ const TabsTitle = ({displays,setActiveName})=>{
         <ul className="nav justify-content-center display-ui">
             {displays.map((display,index)=>
                     <li key={index} className="nav-item ">
-                        {/* <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target={`#${display.displayName}`} type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button> */}
                         <a className="nav-link display-nav-li" onClick={()=>{setActiveName(display.displayName)}}>{display.displayName}</a>
                     </li>
                 )

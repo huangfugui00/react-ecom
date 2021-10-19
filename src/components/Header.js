@@ -7,52 +7,52 @@ const Header = () => {
             <header className="container-header">
                 <nav className="row navbar navbar-expand-lg ">
                     {/* icon name */}
-                    <div className="col-1">
-                        <a href="/" className="brand " >
-                            <img src={defaultAvatar} alt="IMG-LOGO"  />
+                    <div className="col-1 ">
+                        <a href="/" className="brand">
+                            <img  src={defaultAvatar} alt="IMG-LOGO"  />
                         </a>
                     </div>
                     
 
                     {/* nav */}
-                    <div className="col-4 collapse navbar-collapse " id="navbarsExample04">
+                    <div className="col-4 collapse navbar-collapse " id="navbarsHeader">
                        
                         <ul className="row">
                             <li className="col ">
-                                <a className='a-header-item' href="/shop">Shop</a>
+                                <a className='' href="/shop">Shop</a>
                             </li>
 
                             <li  className="col"  data-label1="hot">
-                                <a className='a-header-item' href="shoping-cart.html">Features</a>
+                                <a className='' href="shoping-cart.html">Features</a>
                             </li>
 
                             <li className="col">
-                                <a  className='a-header-item' href="blog.html">Blog</a>
+                                <a  className='' href="blog.html">Blog</a>
                             </li>
 
                             <li className="col">
-                                <a className='a-header-item' href="about.html">About</a>
+                                <a className='' href="about.html">About</a>
                             </li>
 
                             <li className="col">
-                                <a className='a-header-item' href="contact.html">Contact</a>
+                                <a className='' href="contact.html">Contact</a>
                             </li>
                         </ul>
                     </div>
                     {/* icon group */}
-                    <div className="col d-flex justify-content-end ">
+                    <div className="col d-flex justify-content-end " id="iconHeader">
                         <div className="row">
                            
-                            <div className="col p-r-30 icon-header-item hov-cl1">
-                                <i className="zmdi zmdi-search"></i>
+                            <div className="col  ">
+                                <i className="bi bi-search"></i>
                             </div>
                          
-                            <div className="col p-r-30 icon-header-item hov-cl1" data-notify="2">
-                                <i className="zmdi zmdi-shopping-cart"></i>
+                            <div className="col" data-notify="2">
+                                <i className="bi bi-cart-fill "></i>
                             </div>
                             
-                            <div className="col icon-header-item hov-cl1">
-                                <i className="zmdi zmdi-menu"></i>
+                            <div className="col ">
+                                <i className="bi bi-heart "></i>
                             </div>
  
                         </div>

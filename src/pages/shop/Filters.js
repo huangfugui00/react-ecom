@@ -17,10 +17,10 @@ const SortByType = ()=>{
                     <a>Newness</a>
                 </li>
                 <li>
-                    <a>Price: Low to High</a>
+                    <a>Price:Low to High</a>
                 </li>
                 <li>
-                    <a>Price: High to Low</a>
+                    <a>Price:High to Low</a>
                 </li>
             </ul>
         </div>
@@ -37,13 +37,13 @@ const Price = ()=>{
                     <a>All</a>
                 </li>
                 <li>
-                    <a>$0.00 - $50.00</a>
+                    <a>$0.00-$50.00</a>
                 </li>
                 <li>
-                    <a>$50.00 - $100.00</a>
+                    <a>$50.00-$100.00</a>
                 </li>
                 <li>
-                    <a>$100.00 - $200.00</a>
+                    <a>$100.00-$200.00</a>
                 </li>
                 <li>
                     <a>$200.00+</a>
