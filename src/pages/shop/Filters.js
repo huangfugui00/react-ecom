@@ -1,20 +1,26 @@
 import './Filters.scss'
-const Categories = ()=>{
+const SortByType = ()=>{
     return(
         <div className=" col-xl-3 col-md-6">
-            <h4>CATEGORIES</h4>
+            <h4>Sort By</h4>
             <ul>
-                <li>
-                    <a>Women</a>
+                <li>    
+                    <a>Default</a>
                 </li>
                 <li>
-                    <a>Men</a>
+                    <a>Popularity</a>
                 </li>
                 <li>
-                    <a>Shoes</a>
+                    <a>Average rating</a>
                 </li>
                 <li>
-                    <a>Watchs</a>
+                    <a>Newness</a>
+                </li>
+                <li>
+                    <a>Price: Low to High</a>
+                </li>
+                <li>
+                    <a>Price: High to Low</a>
                 </li>
             </ul>
         </div>
@@ -22,22 +28,25 @@ const Categories = ()=>{
 }
 
 
-const Help = ()=>{
+const Price = ()=>{
     return(
         <div className=" col-xl-3 col-md-6">
-            <h4>HELP</h4>
+            <h4>Price</h4>
             <ul>
                 <li>
-                    <a>Track Order</a>
+                    <a>All</a>
                 </li>
                 <li>
-                    <a>Returns</a>
+                    <a>$0.00 - $50.00</a>
                 </li>
                 <li>
-                    <a>Shipping</a>
+                    <a>$50.00 - $100.00</a>
                 </li>
                 <li>
-                    <a>FAQs</a>
+                    <a>$100.00 - $200.00</a>
+                </li>
+                <li>
+                    <a>$200.00+</a>
                 </li>
             </ul>
         </div>
@@ -83,12 +92,12 @@ const Newsletter = ()=>{
 }
 
 
-const Filters = ({display}) => {
+const Filters = ({display,tags}) => {
     return (
         <div className="shop-filter" style={{display: display}}>
             <div className="row">
-                <Categories /> 
-                <Help/>
+                <SortByType /> 
+                <Price/>
                 {/* <Touch contact={contact}/> */}
                 <Newsletter/>
             </div>

@@ -12,9 +12,11 @@
             &:hover{
                 color:black;
                 text-decoration: underline;
+            }          
+            a:hover{
+                cursor: pointer;
+             
             }
-        }
-     
-       
+        }      
     }
 }

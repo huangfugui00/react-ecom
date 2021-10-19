@@ -1,16 +1,16 @@
 import './Categories.scss'
 
-const Categories = ({categories}) => {
+const Categories = ({categories,categorySel,clickCategorySelEvent}) => {
     return (
-        <div className='shop-categories '>                     
+        <div className='shop-categories'>                     
             <ul className='row'>
-                <li className='col'>
-                    <a>All</a>
+                <li className='col' key='all' style={{'text-decoration':  'All'===categorySel && 'underline'}}>
+                    <a onClick={()=>clickCategorySelEvent('All')}>All</a>
                 </li>
                 {
-                    categories.map((category,index)=>
-                        <li className='col' key={index}> 
-                            <a>{category}</a>
+                    categories.map((category)=>
+                        <li className='col' key={category}  style={{'text-decoration': category===categorySel && 'underline'  }}> 
+                            <a onClick={()=> clickCategorySelEvent(category)}>{category}</a>
                         </li>
                     )
                 }
