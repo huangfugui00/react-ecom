@@ -1,9 +1,9 @@
 import React from 'react'
 import './TagButton.scss'
-const TagButton = ({clickSearchBtnEvent}) => {
+const TagButton = ({clickSearchBtnEvent,clickFiltersBtnEvent}) => {
     return (
         <div className="TagButton row gap-4">
-            <button className="col tagButton-filter" >
+            <button className="col tagButton-filter" onClick={clickFiltersBtnEvent} >
                 <i className="bi bi-sort-down pe-2"/>
                 <span>Filter</span>
             </button>
