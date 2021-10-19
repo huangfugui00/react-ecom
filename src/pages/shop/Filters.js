@@ -1,8 +1,8 @@
 import './Filters.scss'
 const SortByType = ()=>{
     return(
-        <div className=" col-xl-3 col-md-6">
-            <h4>Sort By</h4>
+        <div className="shop-sort-by-type col-xl-3 col-md-6">
+            <h5>Sort By</h5>
             <ul>
                 <li>    
                     <a>Default</a>
@@ -30,14 +30,14 @@ const SortByType = ()=>{
 
 const Price = ()=>{
     return(
-        <div className=" col-xl-3 col-md-6">
-            <h4>Price</h4>
+        <div className="shop-sort-by-price col-xl-3 col-md-6">
+            <h5>Price</h5>
             <ul>
                 <li>
                     <a>All</a>
                 </li>
                 <li>
-                    <a>$0.00-$50.00</a>
+                    <a>$0.00 - $50.00</a>
                 </li>
                 <li>
                     <a>$50.00-$100.00</a>
@@ -54,52 +54,31 @@ const Price = ()=>{
 }
 
 
-const Touch = ({contact})=>{
+const Tags = ({tags})=>{
     return(
-        <div className=" col-xl-3 col-md-6">
-            <h4>GET IN TOUCH</h4>
-            <p>Any questions?Let us know in store at {contact.address} or call us at {contact.phone}</p>
-            <ul>
-                <li>
-                    <i className="bi bi-facebook"></i>
-                </li>
-                <li>
-                    <i className="bi bi-twitter"></i>
-                </li>
-                <li>
-                    <i className="bi bi-youtube"></i>
-                </li>
-            </ul>
-        </div>
-    )
-}
-
-
-const Newsletter = ()=>{
-    return(
-        <div className=" col-xl-3 col-md-6">
-             <h4>NEWSLETTER</h4>
-             <form>
-                <div className="">
-                    <input className=""   name="email" placeholder="email@example.com"/>
-                    <button>
-                        Subscribe
+        <div className="shop-filter-by-tag col-xl-3 col-md-6">
+            <h5>Tags</h5>          
+            <div className="row">
+                {tags.map((tag)=>
+                    <button className="col">
+                        {tag}
                     </button>
-                </div>
-            </form>
+                )}
+            </div>                        
         </div>
     )
 }
+
 
 
 const Filters = ({display,tags}) => {
     return (
         <div className="shop-filter" style={{display: display}}>
-            <div className="row">
+            <div className="row justify-content-between gap-4 w-100">
                 <SortByType /> 
                 <Price/>
                 {/* <Touch contact={contact}/> */}
-                <Newsletter/>
+                <Tags tags={tags}/>
             </div>
         </div>
     )
