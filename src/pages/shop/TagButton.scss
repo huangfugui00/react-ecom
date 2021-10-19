@@ -15,12 +15,8 @@
         @extend .my-button-bg-color;
         color:white;
     };
-    &:active{
-        color:green;
-    }
 }
 
 .tagButton-search{ 
     @extend .tagButton-filter;
-  
 }

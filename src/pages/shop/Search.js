@@ -1,9 +1,9 @@
 import React from 'react'
 import './Search.scss'
 
-const Search = () => {
+const Search = ({display}) => {
     return (
-        <div className="shop-search d-flex gap-2">
+        <div className="shop-search" style={{display: display}}>
             <i className="bi bi-search"/>            
             <input className="" placeholder="Search"/>
         </div>
