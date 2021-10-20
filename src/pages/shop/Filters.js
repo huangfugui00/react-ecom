@@ -77,7 +77,6 @@ const Filters = ({display,tags}) => {
             <div className="row justify-content-between gap-4 w-100">
                 <SortByType /> 
                 <Price/>
-                {/* <Touch contact={contact}/> */}
                 <Tags tags={tags}/>
             </div>
         </div>

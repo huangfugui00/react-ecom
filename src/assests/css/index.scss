@@ -53,7 +53,7 @@ input, textarea, label {
 }
 
 .my-container{
-    width:calc(60% + 500px);
+    width:calc(50% + 500px);
     max-width:100%;
     margin:auto;
 }
@@ -80,6 +80,7 @@ input, textarea, label {
     overflow: hidden;
     img{
         transition: transform 0.9s ease;
+        width: 100%;
     }
     &:hover{
         img{

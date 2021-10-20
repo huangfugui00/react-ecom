@@ -1,0 +1,53 @@
+@import '../assests/css/index.scss';
+.component-product{
+
+    #component-product-image{
+        position: relative;
+        @extend .my-transition-img;
+        a{
+            position: absolute;
+            padding:0.5rem 2rem ;
+            text-decoration: none;
+            color:black;
+            display: block;
+            background-color:white;
+            border-radius: 30px;
+            font-size: 1.5rem;
+            bottom: -100px;
+            &:hover{
+                background-color: rgba(85, 8, 8, 0.322);
+            }
+        }
+        &:hover{
+            a{
+                bottom:50px;
+            }
+        }
+    }
+
+    #component-product-intro{
+        color:rgba(128, 128, 128, 0.72);
+        span{
+           font-size:1.2rem;
+            font-family:   sans-serif; 
+        }
+        
+
+        i{
+            font-size:1.5rem;
+            &:hover{
+                color: red;
+                font-weight: bold;
+                cursor:pointer;
+            }
+        }  
+    }
+
+    #component-product-price{
+        color:rgba(128, 128, 128, 0.72);
+        span{
+            font-size:1.2rem;
+            font-family:   sans-serif; 
+        }
+    }
+}

@@ -13,7 +13,6 @@ const Header = () => {
                         </a>
                     </div>
                     
-
                     {/* nav */}
                     <div className="col-4 collapse navbar-collapse " id="navbarsHeader">
                        

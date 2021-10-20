@@ -3,6 +3,7 @@ import Categories from './Categories'
 import TagButton from './TagButton'
 import Search from './Search'
 import Filters from './Filters'
+import Products from './Products'
 import './Shop.scss'
 
 
@@ -56,6 +57,7 @@ const Shop = ({products}) => {
                 </div>  
                 <Search display={displaySearch}/>
                 <Filters display={displayFilters} tags={tags}/>
+                <Products products={products}/>
             </div>    
         </div>  
     )
