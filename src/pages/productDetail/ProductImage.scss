@@ -2,32 +2,17 @@
    img{
        width:100px;
        margin-bottom: 2rem;
+       &:hover{
+           cursor: pointer;
+       }
    }
 }
 
 .product-img-display{
-    margin:0 4rem;
-    position: relative;
-    i{
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 1rem;
-        border-radius:  100% ;
-        position:absolute;
-        top: 5%;
-        right: 10%;
-        background-color: white;
-    }
-    #last-image{
-        position:absolute;
-        top:50%;
-        left: 1%;
-    }
-
-    
+    margin:0 6rem;
 }
 
-// .img-click{
-//     border: 1px solid grey;;
-// }
 
+.img-click{
+    border:2px solid grey;
+}
