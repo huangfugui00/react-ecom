@@ -1,0 +1,7 @@
+@import '../../assests/css/index.scss';
+
+.product-detail{
+    #product-detail-content{
+        @extend .my-container;
+    }
+}

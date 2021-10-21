@@ -1,0 +1,33 @@
+.product-img-lists{
+   img{
+       width:100px;
+       margin-bottom: 2rem;
+   }
+}
+
+.product-img-display{
+    margin:0 4rem;
+    position: relative;
+    i{
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 1rem;
+        border-radius:  100% ;
+        position:absolute;
+        top: 5%;
+        right: 10%;
+        background-color: white;
+    }
+    #last-image{
+        position:absolute;
+        top:50%;
+        left: 1%;
+    }
+
+    
+}
+
+// .img-click{
+//     border: 1px solid grey;;
+// }
+

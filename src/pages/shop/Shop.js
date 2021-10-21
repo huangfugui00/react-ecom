@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React,useState,useEffect} from 'react'
 import Categories from './Categories'
 import TagButton from './TagButton'
 import Search from './Search'
@@ -16,7 +16,16 @@ const Shop = ({products}) => {
     tags=[...new Set(tags)]
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
-    const [categorySel,setCategorySel] = useState('all')
+    const [categorySel,setCategorySel] = useState('All')
+    const [displayProducts,setDisplayProducts]=useState(products)
+
+    useEffect(()=>{
+        if(categorySel === 'All'){
+            setDisplayProducts( products )
+        }else{
+            setDisplayProducts( products.filter(prodcut=>prodcut.category === categorySel))
+        }    
+    },[categorySel,products])
 
     const clickCategorySelEvent = (category)=>{
         setCategorySel(category)
@@ -57,7 +66,7 @@ const Shop = ({products}) => {
                 </div>  
                 <Search display={displaySearch}/>
                 <Filters display={displayFilters} tags={tags}/>
-                <Products products={products}/>
+                <Products products={displayProducts}/>
             </div>    
         </div>  
     )

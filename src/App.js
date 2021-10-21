@@ -2,6 +2,7 @@ import './App.css';
 import { useState} from 'react'
 import Home from'./pages/home/Index'
 import Shop from'./pages/shop/Shop'
+import ProductDetail from './pages/productDetail/ProductDetail'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import {
@@ -24,6 +25,10 @@ function App() {
     [
       {
           img:"/assests/images/product-01.jpg",
+          imgs:['assests/images/product-detail-01.jpg',
+              'assests/images/product-detail-02.jpg',
+              'assests/images/product-detail-03.jpg',
+                ],
           intro: "Esprit Ruffle Shirt",
           price:"16.64",
           category:"Women",
@@ -67,7 +72,12 @@ function App() {
           <Route path="/shop">
             <Shop products={products}/>
           </Route>
+          <Route path="/products">
+            <ProductDetail product={products[0]}/>
+          </Route>
           <Route path="/" component={Home}/>
+         
+         
         </Switch>
         <Footer contact={contact} />
     </Router>

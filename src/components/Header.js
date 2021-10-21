@@ -22,7 +22,7 @@ const Header = () => {
                             </li>
 
                             <li  className="col"  data-label1="hot">
-                                <a className='' href="shoping-cart.html">Features</a>
+                                <a className='' href="/products">Features</a>
                             </li>
 
                             <li className="col">
