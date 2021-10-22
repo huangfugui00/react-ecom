@@ -19,7 +19,7 @@ const ProductImgLists = ({productImgs,productImgDisplay,clickProductImgEvent})=>
 
 const ProductImgDisplay = ({productImgs,productImgDisplay,clickProductImgEvent})=>{
     return(
-        <div id="carouselProducts" class="carousel slide product-img-display" data-bs-ride="carousel">
+        <div  class="carousel slide product-img-display" data-bs-ride="carousel">
              <div class="carousel-inner">
                 {
                     productImgs.map((productImg)=>
@@ -30,14 +30,14 @@ const ProductImgDisplay = ({productImgs,productImgDisplay,clickProductImgEvent})
                 }
                </div>
    
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducts" data-bs-slide="prev">
+            {/* <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducts" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Prev</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselProducts" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> */}
         </div>
     )
 }
@@ -58,7 +58,7 @@ const ProductImage = ({productImgs}) => {
                 clickProductImgEvent={clickProductImgEvent}
                 />
             </div>
-            <div className="col">
+            <div className="col-10">
                 <ProductImgDisplay 
                 productImgs={productImgs}
                 productImgDisplay={productImgDisplay} 

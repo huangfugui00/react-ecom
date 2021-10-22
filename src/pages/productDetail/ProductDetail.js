@@ -8,11 +8,11 @@ const ProductDetail = ({product}) => {
         <div className="product-detail">
             <hr/>
             <div id="product-detail-content" className="row ">
-                <div className="col">
+                <div className="col-xl-8">
                     <ProductImage productImgs={product.imgs}/>
                 </div>
-                <div className="col-5">
-                    <ProductIntro product={product}/>
+                <div className="col-xl-4">
+                    <ProductIntro product = {product}/>
                 </div>
                 
             </div>

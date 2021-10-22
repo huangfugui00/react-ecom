@@ -1,0 +1,85 @@
+@import '../../assests/css/index.scss';
+
+.product-intro{ 
+    #previous-next{
+        font-size:1.2rem;
+        margin-bottom: 2rem;
+        a{
+            color:black;
+            text-decoration: none;
+            &:hover{
+                color:var(--btn-bg-color);  
+            }
+        }
+    }
+    #intro{
+        font-size:2rem;
+        font-weight: bold;
+    }
+    #price{
+        font-size:1.5rem;
+        color:var(--btn-bg-color); 
+    }
+    #category{
+        margin-top: 1rem;
+        span{
+            margin-left: 1rem;
+            color:var(--btn-bg-color); 
+            &:hover{
+                cursor: pointer;
+                color:rgba(85, 8, 8, 0.322);      
+            }
+        }
+    }
+    #available{
+        span{
+            margin-left: 1rem;
+        }
+    }
+
+    #num-cart-favorite{
+        margin-top: 2rem;
+        #product-buy-num{
+            border: 1px solid grey;
+            border-radius:50px;
+            padding: 1rem 0;
+            i{
+                margin:auto;
+                width: 50px;
+                text-align: left;
+                cursor: pointer;
+                text-align: center;  
+                &:hover{
+                    color:var(--btn-bg-color);
+                }
+            }
+            input{
+                margin:auto;
+                width: 50px;
+                text-align: center;  
+            }
+        }
+        #add-cart{
+            border-radius: 50px;
+            background-color:var(--btn-bg-color);
+            border:none;
+            color:white;
+            padding:0 2rem;
+        }
+        #favorite{
+            margin:auto 0;
+            text-align: center;
+            font-size: 2rem;
+            color:var(--btn-bg-color);
+            border-radius: 100%;
+         
+            &:hover{
+                color:red;
+                cursor: pointer;
+            }
+        }
+      
+     
+
+    }
+}

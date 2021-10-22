@@ -30,6 +30,7 @@ function App() {
               'assests/images/product-detail-03.jpg',
                 ],
           intro: "Esprit Ruffle Shirt",
+          description: "Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.",
           price:"16.64",
           category:"Women",
           tags:['Fashion','Lifestyle'], 
