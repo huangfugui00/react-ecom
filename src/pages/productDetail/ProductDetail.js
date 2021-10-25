@@ -1,6 +1,8 @@
 import './ProductDetail.scss'
 import ProductImage from './ProductImage'
 import ProductIntro from './ProductIntro'
+import TagButtons from './TagButtons'
+import TagContent from './TagContent'
 import React from 'react'
 
 const ProductDetail = ({product}) => {
@@ -14,7 +16,10 @@ const ProductDetail = ({product}) => {
                 <div className="col-xl-4">
                     <ProductIntro product = {product}/>
                 </div>
-                
+            </div>
+            <div id="product-detail-data">
+                <TagButtons/>
+                <TagContent product = {product}/>
             </div>
             
         </div>

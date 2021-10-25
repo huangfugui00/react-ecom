@@ -6,4 +6,9 @@
         margin-top:6rem;
         gap:5rem 0;
     }
+
+    #product-detail-data{
+        @extend .my-container;
+        margin-top:4rem;
+    }
 }

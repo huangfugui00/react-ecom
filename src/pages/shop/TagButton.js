@@ -3,7 +3,7 @@ import './TagButton.scss'
 const TagButton = ({clickSearchBtnEvent,clickFiltersBtnEvent}) => {
     return (
         <div className="TagButton row gap-4">
-            <button className="col tagButton-filter" onClick={clickFiltersBtnEvent} >
+            <button className="col d-flex  tagButton-filter" onClick={clickFiltersBtnEvent} >
                 <i className="bi bi-sort-down pe-2"/>
                 <span>Filter</span>
             </button>
