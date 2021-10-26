@@ -1,23 +1,24 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import  './Footer.scss'
 
 
-const Categories = ()=>{
+const Categories = (): JSX.Element=>{
     return(
         <div className="categories col-xl-3 col-md-6">
             <h4>CATEGORIES</h4>
             <ul>
                 <li>
-                    <a>Women</a>
+                    <a href="#">Women</a>
                 </li>
                 <li>
-                    <a>Men</a>
+                    <a href="#">Men</a>
                 </li>
                 <li>
-                    <a>Shoes</a>
+                    <a href="#">Shoes</a>
                 </li>
                 <li>
-                    <a>Watchs</a>
+                    <a href="#">Watchs</a>
                 </li>
             </ul>
         </div>
@@ -48,7 +49,7 @@ const Help = ()=>{
 }
 
 
-const Touch = ({contact})=>{
+const Touch = ({contact}:props)=>{
     return(
         <div className="touch col-xl-3 col-md-6">
             <h4>GET IN TOUCH</h4>
@@ -85,8 +86,14 @@ const Newsletter = ()=>{
     )
 }
 
+type props={
+    contact: {
+        address:string,
+        phone:string,
+    },
+}
 
-const Footer = ({contact}) => {
+const Footer = ({contact}:props) => {
     return (
         <div className="footer">
             <div className="main row">

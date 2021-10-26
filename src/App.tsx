@@ -10,6 +10,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import React from 'react';
 
 
 
@@ -76,9 +77,7 @@ function App() {
           <Route path="/products">
             <ProductDetail product={products[0]}/>
           </Route>
-          <Route path="/" component={Home}/>
-         
-         
+          <Route path="/" component={Home}/>         
         </Switch>
         <Footer contact={contact} />
     </Router>
