@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React,{CSSProperties} from 'react';
+import React from 'react';
 import './Categories.scss'
-import CSS from 'csstype'
+
 
 type categoriesType = {
     categories:string[],

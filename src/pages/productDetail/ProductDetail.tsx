@@ -4,13 +4,16 @@ import ProductIntro from './ProductIntro'
 import TagButtons from './TagButtons'
 import TagContent from './TagContent'
 import {productType} from '../../App'
-import React from 'react'
+import React,{useState} from 'react'
 
 type productDetailProp={
     product:productType
 }
 
 const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
+
+    const [tagButtonSel,setTagButtonSel] = useState('description')
+
     return (
         <div className="product-detail">
             <hr/>
@@ -23,8 +26,8 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
                 </div>
             </div>
             <div id="product-detail-data">
-                <TagButtons/>
-                <TagContent product = {product}/>
+                <TagButtons setTagButtonSel={setTagButtonSel} tagButtonSel={tagButtonSel}/>
+                <TagContent tagButtonSel={tagButtonSel} product = {product}/>
             </div>
             
         </div>
