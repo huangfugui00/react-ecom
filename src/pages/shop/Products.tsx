@@ -1,8 +1,14 @@
-import './Products.scss'
+
 import React from 'react'
 import Product from '../../components/Product'
+import {productType} from '../../App'
+import './Products.scss'
 
-const Products = ({products}) => {
+type productsProp ={
+    products:productType[]
+}
+
+const Products = ({products}:productsProp) : JSX.Element=> {
     return (
         <div className="shop-products row">
             {products.map(product => (

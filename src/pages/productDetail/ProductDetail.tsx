@@ -3,9 +3,14 @@ import ProductImage from './ProductImage'
 import ProductIntro from './ProductIntro'
 import TagButtons from './TagButtons'
 import TagContent from './TagContent'
+import {productType} from '../../App'
 import React from 'react'
 
-const ProductDetail = ({product}) => {
+type productDetailProp={
+    product:productType
+}
+
+const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
     return (
         <div className="product-detail">
             <hr/>

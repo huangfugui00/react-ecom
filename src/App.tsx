@@ -19,7 +19,7 @@ export type contactType = {
 }
 
 export type productType = {
-  img:string,
+  thumb:string,
   imgs?:string[],
   intro:string,
   description:string,
@@ -40,7 +40,7 @@ function App() {
   const [products] = useState(
     [
       {
-          img:"/assests/images/product-01.jpg",
+          thumb:"/assests/images/product-01.jpg",
           imgs:['assests/images/product-detail-01.jpg',
               'assests/images/product-detail-02.jpg',
               'assests/images/product-detail-03.jpg',
@@ -52,28 +52,28 @@ function App() {
           tags:['Fashion','Lifestyle'], 
       },
       {
-          img:"/assests/images/product-02.jpg",
+        thumb:"/assests/images/product-02.jpg",
           intro: "Ruffle supply",
           price:"35.31",
           category:"Women",
           tags:['Fashion','Crafts'],
       },
       {
-          img:"/assests/images/product-03.jpg",
+        thumb:"/assests/images/product-03.jpg",
           intro: "Herschel watch",
           price:"24.23",
           category:"Man",
           tags:['Demin','Crafts'],
       },
       {
-          img:"/assests/images/product-06.jpg",
+        thumb:"/assests/images/product-06.jpg",
           intro: "Herschel supply",
           price:"24.23",
           category:"Women",
           tags:['Streetstyle','Crafts'],
       },
       {
-          img:"/assests/images/product-08.jpg",
+        thumb:"/assests/images/product-08.jpg",
           intro: "Herschel supply",
           price:"21.23",
           category:"Watch",

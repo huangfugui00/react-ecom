@@ -1,8 +1,13 @@
 import './ProductIntro.scss'
 
-import {React,useState} from 'react'
+import React,{useState} from 'react'
+import {productType} from '../../App'
 
-const ProductIntro = ({product}) => {
+type productIntroProp = {
+    product:productType
+}
+
+const ProductIntro = ({product}:productIntroProp) => {
     const [buyNum,setBuyNum]=useState(1)
 
     return (
@@ -25,9 +30,9 @@ const ProductIntro = ({product}) => {
             <hr/>
             <div className="d-flex justify-content-between" id="num-cart-favorite">
                 <div id="product-buy-num" className="d-flex">
-                    <i className="bi bi-dash" onClick={() =>{setBuyNum(Math.max(parseInt(buyNum)-1,1))}} />
-                    <input value={buyNum}  onChange={(e)=>{setBuyNum(e.target.value)}}/>
-                    <i className="bi bi-plus" onClick={() =>{setBuyNum(parseInt(buyNum)+1)}}/>
+                    <i className="bi bi-dash" onClick={() =>{setBuyNum(Math.max(buyNum-1,1))}} />
+                    <input value={buyNum}  onChange={(e)=>{setBuyNum(parseInt(e.target.value))}}/>
+                    <i className="bi bi-plus" onClick={() =>{setBuyNum(buyNum+1)}}/>
                 </div>
                 <button  id="add-cart">ADD TO CART</button>
                 <i id="favorite" className="bi bi-heart"/>

@@ -1,19 +1,17 @@
 import React from 'react'
+import {productType} from '../App'
 import './Product.scss'
 
-type props={
-    product: {
-        img:string,
-        intro:string,
-        price:number,
-    },
+
+type productProp={
+    product: productType
 }
 
-const Product = ({product}:props):JSX.Element => {
+const Product = ({product}:productProp):JSX.Element => {
     return (
         <div className="component-product ">
             <div id="component-product-image" className=" d-flex flex-columm justify-content-center">
-                <img src={product.img} alt=""/>
+                <img src={product.thumb} alt=""/>
                 <a href="/#">
                     Quick View
                 </a>

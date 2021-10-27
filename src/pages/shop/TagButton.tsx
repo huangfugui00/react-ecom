@@ -1,6 +1,13 @@
 import React from 'react'
 import './TagButton.scss'
-const TagButton = ({clickSearchBtnEvent,clickFiltersBtnEvent}) => {
+
+type tagButtonProp ={
+    clickSearchBtnEvent : ()=>void,
+    clickFiltersBtnEvent: ()=>void,
+}
+
+
+const TagButton = ({clickSearchBtnEvent,clickFiltersBtnEvent}:tagButtonProp) => {
     return (
         <div className="TagButton row gap-4">
             <button className="col d-flex  tagButton-filter" onClick={clickFiltersBtnEvent} >

@@ -53,8 +53,11 @@ const Price = ()=>{
     )
 }
 
+type tagsProp = {
+    tags:string[],
+}
 
-const Tags = ({tags})=>{
+const Tags = ({tags}:tagsProp):JSX.Element=>{
     return(
         <div className="shop-filter-by-tag col-xl-3 col-md-6">
             <h5>Tags</h5>          
@@ -70,8 +73,13 @@ const Tags = ({tags})=>{
 }
 
 
+type filtersProp = {
+    display:string,
+    tags:string[],
+}
 
-const Filters = ({display,tags}) => {
+
+const Filters = ({display,tags}:filtersProp):JSX.Element => {
     return (
         <div className="shop-filter" style={{display: display}}>
             <div className="row justify-content-between gap-4 w-100">
