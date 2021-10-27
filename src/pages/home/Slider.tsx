@@ -1,6 +1,6 @@
 import React from 'react'
 import {sliderPicType} from './Index'
-import './Slider.css';
+import './Slider.scss';
 
 
 const SlideContents = (): JSX.Element=>{

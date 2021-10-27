@@ -1,4 +1,4 @@
-import './Banner.css'
+import './Banner.scss'
 import {bannerType} from './Index'
 
 type bannerItemProps = {
