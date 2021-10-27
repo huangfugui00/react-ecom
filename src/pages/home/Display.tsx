@@ -1,9 +1,14 @@
 import {useState,useEffect} from 'react'
 import './Display.scss'
+import {displayType,displayContentType} from './Index'
 
 // nav bar 
+type tabsTitleProp={
+    displays:displayType[],
+    setActiveName: (name: string) => void;
+}
 
-const TabsTitle = ({displays,setActiveName})=>{
+const TabsTitle = ({displays,setActiveName}:tabsTitleProp)=>{
     return(
         <ul className="nav justify-content-center display-ui">
             {displays.map((display,index)=>
@@ -19,14 +24,18 @@ const TabsTitle = ({displays,setActiveName})=>{
 //nav contents
 
 //one img
-const TabDisplay = ({displayContent})=>{
+type  tabDisplayProp = {
+    displayContent:displayContentType
+}
+
+const TabDisplay = ({displayContent}:tabDisplayProp)=>{
     return(
            
         <div className=" col-xl-3 col-md-6" >
             <div className="display-tab-div">
                 <div className="display-tab-image d-flex flex-columm justify-content-center">
-                    <img src={displayContent.img} className="w-100" ></img>  
-                    <a href="#" className="">
+                    <img src={displayContent.img} className="w-100" alt={displayContent.intro}></img>  
+                    <a href="/#" >
                         Quick View
                     </a>
                 </div>
@@ -46,10 +55,14 @@ const TabDisplay = ({displayContent})=>{
     )
 }
 
+type tabContentsProp = {
+    displays:displayType[],
+    activeName:string,
+}
 //tabs->tab->display
-const TabContents = ({displays,activeName}) =>{
+const TabContents = ({displays , activeName}:tabContentsProp):JSX.Element =>{
     
-    const carousels = (displayContents)=>{
+    const carousels = (displayContents:displayContentType[])=>{
         const num =Math.ceil( displayContents.length/4);
         var indents = [];
         for(let i = 0;i<num;i++){
@@ -67,36 +80,45 @@ const TabContents = ({displays,activeName}) =>{
     }
 
     return(
-        
-        displays.map ((display,index)=>
-            <div className={`tab-pane fade show ${display.displayName==activeName && 'active' }`} id={display.displayName} role="tabpanel">
-                <div className="display-tab m-auto "  key={index}>
-                    <div id={`carousel${index}`} className="carousel slide" data-ride="carousel">
-                         {/* //one Tab */}
-                         <div className="carousel-inner">
-                            {carousels(display.displayContents)}
-                         </div>
-                         <button className="carousel-control-prev" type="button" data-bs-target={`#carousel${index}`} data-bs-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Previous</span>
-                        </button>
-                        <button className="carousel-control-next " type="button" data-bs-target={`#carousel${index}`} data-bs-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Next</span>
-                        </button> 
+        <div>
+            {   displays.map ((display,index)=>
+                <div className={`tab-pane fade show ${display.displayName==activeName && 'active' }`} id={display.displayName} role="tabpanel">
+                    <div className="display-tab m-auto "  key={index}>
+                        <div id={`carousel${index}`} className="carousel slide" data-ride="carousel">
+                            {/* //one Tab */}
+                            <div className="carousel-inner">
+                                {carousels(display.displayContents)}
+                            </div>
+                            <button className="carousel-control-prev" type="button" data-bs-target={`#carousel${index}`} data-bs-slide="prev">
+                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Previous</span>
+                            </button>
+                            <button className="carousel-control-next " type="button" data-bs-target={`#carousel${index}`} data-bs-slide="next">
+                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Next</span>
+                            </button> 
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )}
+        </div>
+     
     )
 }
 
 
+type displayProp={
+    displays:displayType[]
+}
 
-const Display = ({displays}) => {
+
+const Display = ({displays}:displayProp) => {
     const [activeName,setActiveName] = useState('')
+
     useEffect(() => {
-        setActiveName(displays[0].displayName)
+        if(typeof(displays) !== "undefined"){
+            setActiveName(displays[0].displayName);
+        } 
       },[])
 
     return (

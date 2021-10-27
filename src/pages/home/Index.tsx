@@ -4,6 +4,34 @@ import Banner from './Banner'
 import Display from './Display'
 import BlogDisplay from './BlogDisplay'
 
+export type bannerType = {
+    img: string;
+  };
+
+export type displayContentType={
+    img:string,
+    intro: string,
+    price:string,
+}
+
+export type displayType = {
+    displayName: string;
+    displayContents:displayContentType[],
+}
+
+export type blogType = {
+    author:string,
+    img:string,
+    createdAt:string,
+    title:string,
+    content:string,
+}
+
+export type sliderPicType ={
+    img:string,
+    active?:boolean,
+}
+
 const Index = () => {
     const [sliderPics] = useState(
         [{
@@ -18,7 +46,7 @@ const Index = () => {
             img:"/assests/images/slide-04.jpg",
          
         }
-    ])
+    ] as sliderPicType[])
 
     const [banners] = useState(
         [{
@@ -31,9 +59,8 @@ const Index = () => {
         },
         {
             img:"/assests/images/banner-06.jpg",
-        
         }
-    ])
+    ] as bannerType[] )
 
     const [displays] = useState(
         [
@@ -119,7 +146,7 @@ const Index = () => {
                 },
             ]
         }
-    ])
+    ] as displayType[])
 
     const [blogs] = useState([
         {

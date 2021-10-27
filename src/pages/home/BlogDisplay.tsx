@@ -1,10 +1,14 @@
 import React from 'react'
 import './BlogDisplay.scss'
+import {blogType} from './Index'
 
-const BlogDiv = ({blog}) =>{
+type blogDivProp= {
+    blog:blogType
+}
+const BlogDiv = ({blog}:blogDivProp) : JSX.Element=>{
     return(
-        <div  className="blog-div">
-            <img src={blog.img} className="w-100"/>
+        <div className="blog-div">
+            <img src={blog.img} alt={blog.title} className="w-100"/>
             <p>By {blog.author} on {blog.createdAt}</p>
             <h3>{blog.title}</h3>
             <div className="" id="blog-content">
@@ -14,7 +18,14 @@ const BlogDiv = ({blog}) =>{
     )
 }
 
-const BlogDisplay = ({blogs}) => {
+
+
+
+type blogDisplayProp= {
+    blogs:blogType[]
+}
+
+const BlogDisplay = ({blogs}:blogDisplayProp) : JSX.Element=> {
     return (
         <div className="main">
             <h1>Our Blogs</h1>
@@ -28,7 +39,6 @@ const BlogDisplay = ({blogs}) => {
                 }     
             </div>
         </div>
-        
     )
 }
 

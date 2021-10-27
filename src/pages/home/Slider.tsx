@@ -1,8 +1,9 @@
 import React from 'react'
+import {sliderPicType} from './Index'
 import './Slider.css';
 
 
-const SlideContents = ()=>{
+const SlideContents = (): JSX.Element=>{
     return(
         <div className="my-padding row h-100  align-content-center  gap-4">
             <div className="">
@@ -27,7 +28,10 @@ const SlideContents = ()=>{
     )
 }
 
-const Slider = ({sliderPics}) => {
+type sliderProp = {
+    sliderPics:sliderPicType[]
+}
+const Slider = ({sliderPics}:sliderProp) => {
     
     const slideItems= sliderPics.map((sliderPic,index) =>
         <div key={index}
