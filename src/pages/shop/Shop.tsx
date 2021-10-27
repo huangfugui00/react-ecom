@@ -1,17 +1,25 @@
-import {React,useState,useEffect} from 'react'
+import React, {useState,useEffect} from 'react'
 import Categories from './Categories'
 import TagButton from './TagButton'
 import Search from './Search'
 import Filters from './Filters'
 import Products from './Products'
+import {productType} from '../../App'
 import './Shop.scss'
 
 
-const Shop = ({products}) => {
+type shopProp = {
+    products:productType[]
+}
+
+
+const Shop = ({products}:shopProp) : JSX.Element => {
     const categories =[...new Set(products.map((product) =>product.category))]
-    let tags=[]
+    let tags: string[] = []
     for(let i =0;i<products.length;i++) {
-        tags=tags.concat(products[i].tags)
+        if( products[i].tags !==undefined ) {
+            products[i].tags?.forEach(element=>tags.push(element))
+        }
     }
     tags=[...new Set(tags)]
     const [displaySearch,setDisplaySearch ] = useState('none')
@@ -27,7 +35,7 @@ const Shop = ({products}) => {
         }    
     },[categorySel,products])
 
-    const clickCategorySelEvent = (category)=>{
+    const clickCategorySelEvent = (category:string)=>{
         setCategorySel(category)
     }
 

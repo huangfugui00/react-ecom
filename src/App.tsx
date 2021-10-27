@@ -13,13 +13,28 @@ import {
 import React from 'react';
 
 
+export type contactType = {
+  phone:string,
+  address:string,
+}
+
+export type productType = {
+  img:string,
+  imgs?:string[],
+  intro:string,
+  description:string,
+  price:string,
+  category:string,
+  tags?:string[],
+}
+
 
 function App() {
   const [contact] = useState(
     {
         phone:"123456",
         address:"广州市番禺区"
-    }
+    } as contactType
   )
 
   const [products] = useState(
@@ -64,7 +79,7 @@ function App() {
           category:"Watch",
           tags:['Young'],
       },
-    ]
+    ] as productType[]
   )
   return (
     <Router>
