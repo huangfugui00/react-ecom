@@ -1,21 +1,21 @@
 import React from 'react'
-import './TagContent.scss'
 import  Description from './Description'
 import  Comments from './Comments'
 import {productType} from '../../App'
-import {commentContentType} from './ProductDetail'
+import {commentType} from './ProductDetail'
+import './TagContent.scss'
 
 type tagContentProp = {
     tagButtonSel:string,
     product :productType,
-    commentContent:commentContentType,
+    comments:commentType[],
 }
 
-const TagContent = ({tagButtonSel,product,commentContent}:tagContentProp) => {
+const TagContent = ({tagButtonSel,product,comments}:tagContentProp) => {
     return (
         <div className="product-detail-tag-content">
             <Description description={product.description} tagButtonSel={tagButtonSel}/>
-            <Comments tagButtonSel={tagButtonSel} commentContent={commentContent}/>
+            <Comments tagButtonSel={tagButtonSel} comments={comments}/>
         </div>
     )
 }

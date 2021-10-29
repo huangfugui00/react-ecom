@@ -17,24 +17,11 @@ export type commentType = {
     thumbUrl:string,
 }
 
-export type commentContentType={
-    start5:number,
-    start4:number,
-    start3:number,
-    start2:number;
-    start1:number;
-    comments:commentType[]
-}
 
 const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
 
-    const [commentContent] = useState({
-        start5:5,
-        start4:4,
-        start3:10,
-        start2:1,
-        start1:0,
-        comments:[
+    const [comments] = useState(
+        [
             {
                 username:"jock",
                 content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
@@ -65,10 +52,7 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
                 start:5,
                 thumbUrl:"img"
             }
-        ]
-
-    }  as commentContentType
-        
+        ] as commentType[]
     )
 
     const [tagButtonSel,setTagButtonSel] = useState('description')
@@ -86,7 +70,7 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
             </div>
             <div id="product-detail-data">
                 <TagButtons setTagButtonSel={setTagButtonSel} tagButtonSel={tagButtonSel}/>
-                <TagContent tagButtonSel={tagButtonSel} product = {product} commentContent={commentContent}/>
+                <TagContent tagButtonSel={tagButtonSel} product = {product} comments={comments}/>
             </div>
             
         </div>
