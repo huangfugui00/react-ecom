@@ -1,6 +1,6 @@
 import React from 'react'
 import './BlogDisplay.scss'
-import {blogType} from './Index'
+import {blogType} from '../Home'
 
 type blogDivProp= {
     blog:blogType

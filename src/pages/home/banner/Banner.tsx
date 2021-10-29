@@ -1,5 +1,5 @@
 import './Banner.scss'
-import {bannerType} from './Index'
+import {bannerType} from '../Home'
 
 type bannerItemProps = {
     banner:bannerType

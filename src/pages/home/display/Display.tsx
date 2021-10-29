@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 import './Display.scss'
-import {displayType,displayContentType} from './Index'
+import {displayType,displayContentType} from '../Home'
 
 // nav bar 
 type tabsTitleProp={

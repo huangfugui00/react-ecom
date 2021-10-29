@@ -11,7 +11,7 @@ const TagButtons = ({tagButtonSel,setTagButtonSel}:tagButtonsProp):JSX.Element =
         backgroundColor:'rgba(103,117,214,0.8)',
         color:'white'
     }
-    const nullStyle: React.CSSProperties = {}
+    const nullStyle: React.CSSProperties =  {}
 
     return (
         <div className="tag-buttons d-flex">

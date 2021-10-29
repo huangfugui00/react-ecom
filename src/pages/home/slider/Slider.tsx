@@ -1,5 +1,5 @@
 import React from 'react'
-import {sliderPicType} from './Index'
+import {sliderPicType} from '../Home'
 import './Slider.scss';
 
 

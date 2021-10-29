@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Slider from './Slider'
-import Banner from './Banner'
-import Display from './Display'
-import BlogDisplay from './BlogDisplay'
+import Slider from './slider/Slider'
+import Banner from './banner/Banner'
+import Display from './display/Display'
+import BlogDisplay from './blogDisplay/BlogDisplay'
 
 export type bannerType = {
     img: string;
