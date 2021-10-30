@@ -36,7 +36,20 @@ type commentListProp = {
 const CommentList = ({comments}:commentListProp)=>{
     return(
         <div className="comments-commentlist">
-            <p>first comment</p>
+            {
+                comments.map((comment)=>
+                <div id="comment-item">
+                    <div className="d-flex">
+                        <img src={comment.thumbUrl} alt={comment.username}></img>
+                        <div id="comment-username-start">
+                            <h4>{comment.username}</h4>
+                            <i className="bi bi-star-fill"/><i className="bi bi-star-fill"/><i className="bi bi-star-fill"/><i className="bi bi-star-fill"/><i className="bi bi-star-fill"/>
+                        </div>
+                    </div>
+                    <p>{comment.content}</p>
+                </div>
+                )
+            }
         </div>
     )
 }
@@ -71,6 +84,7 @@ const Comments = ({tagButtonSel, comments}:commentsProp) : JSX.Element=> {
         <div style={tagButtonSel==='comments'?clickStyle:nullStyle} className="row gap-2 comments" >      
             <div className="col ">
                 <StartOverall comments={comments}/>
+                <hr/>
                 <CommentList comments={comments}/>  
             </div>
             <div  className="col">

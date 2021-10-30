@@ -26,31 +26,31 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
                 username:"jock",
                 content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
                 start:5,
-                thumbUrl:"img"
+                thumbUrl:"/assests/images/thumb-01.jpg"
             },
             {
                 username:"jock2",
                 content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
                 start:5,
-                thumbUrl:"img"
+                thumbUrl:"/assests/images/thumb-02.jpg"
             },
             {
                 username:"jock3",
                 content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
                 start:5,
-                thumbUrl:"img"
+                thumbUrl:"/assests/images/slide-07.jpg"
             },
             {
                 username:"jock4",
                 content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
                 start:5,
-                thumbUrl:"img"
+                thumbUrl:"/assests/images/product-01.jpg"
             },
             {
                 username:"jock5",
                 content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
                 start:5,
-                thumbUrl:"img"
+                thumbUrl:"/assests/images/slide-07.jpg"
             }
         ] as commentType[]
     )
