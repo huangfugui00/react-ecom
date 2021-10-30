@@ -1,6 +1,8 @@
 import {useState,useEffect} from 'react'
+import {productType} from '../../../App'
 import './Display.scss'
-import {displayType,displayContentType} from '../Home'
+
+import {displayType} from '../Home'
 
 // nav bar 
 type tabsTitleProp={
@@ -25,7 +27,7 @@ const TabsTitle = ({displays,setActiveName}:tabsTitleProp)=>{
 
 //one img
 type  tabDisplayProp = {
-    displayContent:displayContentType
+    displayContent:productType
 }
 
 const TabDisplay = ({displayContent}:tabDisplayProp)=>{
@@ -34,7 +36,7 @@ const TabDisplay = ({displayContent}:tabDisplayProp)=>{
         <div className=" col-xl-3 col-md-6" >
             <div className="display-tab-div">
                 <div className="display-tab-image d-flex flex-columm justify-content-center">
-                    <img src={displayContent.img} className="w-100" alt={displayContent.intro}></img>  
+                    <img src={displayContent.thumb} className="w-100" alt={displayContent.intro}></img>  
                     <a href="/#" >
                         Quick View
                     </a>
@@ -56,7 +58,7 @@ const TabDisplay = ({displayContent}:tabDisplayProp)=>{
 }
 
  
-const carousels = (displayContents:displayContentType[])=>{
+const carousels = (displayContents:productType[])=>{
     const num =Math.ceil( displayContents.length/4);
     var indents = [];
     for(let i = 0;i<num;i++){

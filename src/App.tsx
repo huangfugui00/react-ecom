@@ -12,6 +12,11 @@ import {
 } from "react-router-dom";
 import React from 'react';
 
+// export type displayContentType={
+//   img:string,
+//   intro: string,
+//   price:string,
+// }
 
 export type contactType = {
   phone:string,

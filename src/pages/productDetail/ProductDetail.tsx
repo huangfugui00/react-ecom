@@ -1,10 +1,13 @@
-import './ProductDetail.scss'
+import React,{useState} from 'react'
 import ProductImage from './ProductImage'
 import ProductIntro from './ProductIntro'
 import TagButtons from './TagButtons'
 import TagContent from './TagContent'
+import BestSeller from './BestSeller'
 import {productType} from '../../App'
-import React,{useState} from 'react'
+
+import './ProductDetail.scss'
+
 
 type productDetailProp={
     product:productType
@@ -55,10 +58,39 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
         ] as commentType[]
     )
 
+    const [bestSellers]= useState( [
+        {
+            thumb:"/assests/images/product-01.jpg",
+            intro: "Esprit Ruffle Shirt",
+            price:"16.64",
+        },
+        {
+            thumb:"/assests/images/product-02.jpg",
+            intro: "Herschel supply",
+            price:"35.31",
+        },
+        {
+            thumb:"/assests/images/product-03.jpg",
+            intro: "Herschel supply",
+            price:"24.23",
+        },
+        {
+            thumb:"/assests/images/product-06.jpg",
+            intro: "Herschel supply",
+            price:"24.23",
+        },
+        {
+            thumb:"/assests/images/product-08.jpg",
+            intro: "Herschel supply",
+            price:"21.23",
+        },
+        
+    ] as productType[])
+
     const [tagButtonSel,setTagButtonSel] = useState('description')
 
     return (
-        <div className="product-detail">
+        <div className="product-detail ">
             <hr/>
             <div id="product-detail-content" className="row ">
                 <div className="col-xl-8">
@@ -71,7 +103,11 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
             <div id="product-detail-data">
                 <TagButtons setTagButtonSel={setTagButtonSel} tagButtonSel={tagButtonSel}/>
                 <TagContent tagButtonSel={tagButtonSel} product = {product} comments={comments}/>
+            </div> 
+            <div id="product-detail-best-seller">
+                <BestSeller bestSellers={bestSellers}/>
             </div>
+        
             
         </div>
     )

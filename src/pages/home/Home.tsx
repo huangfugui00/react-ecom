@@ -3,20 +3,21 @@ import Slider from './slider/Slider'
 import Banner from './banner/Banner'
 import Display from './display/Display'
 import BlogDisplay from './blogDisplay/BlogDisplay'
+import {productType} from '../../App'
 
 export type bannerType = {
     img: string;
   };
 
-export type displayContentType={
-    img:string,
-    intro: string,
-    price:string,
-}
+// export type displayContentType={
+//     img:string,
+//     intro: string,
+//     price:string,
+// }
 
 export type displayType = {
     displayName: string;
-    displayContents:displayContentType[],
+    displayContents:productType[],
 }
 
 export type blogType = {
@@ -68,27 +69,27 @@ const Index = () => {
             displayName:"Best Seller",
             displayContents:[
                 {
-                    img:"/assests/images/product-01.jpg",
+                    thumb:"/assests/images/product-01.jpg",
                     intro: "Esprit Ruffle Shirt",
                     price:"16.64",
                 },
                 {
-                    img:"/assests/images/product-02.jpg",
+                    thumb:"/assests/images/product-02.jpg",
                     intro: "Herschel supply",
                     price:"35.31",
                 },
                 {
-                    img:"/assests/images/product-03.jpg",
+                    thumb:"/assests/images/product-03.jpg",
                     intro: "Herschel supply",
                     price:"24.23",
                 },
                 {
-                    img:"/assests/images/product-06.jpg",
+                    thumb:"/assests/images/product-06.jpg",
                     intro: "Herschel supply",
                     price:"24.23",
                 },
                 {
-                    img:"/assests/images/product-08.jpg",
+                    thumb:"/assests/images/product-08.jpg",
                     intro: "Herschel supply",
                     price:"21.23",
                 },
@@ -99,32 +100,32 @@ const Index = () => {
             displayName:"Top Rate",
             displayContents:[
                 {
-                    img:"/assests/images/product-11.jpg",
+                    thumb:"/assests/images/product-11.jpg",
                     intro: "Esprit Ruffle Shirt",
                     price:"16.64",
                 },
                 {
-                    img:"/assests/images/product-12.jpg",
+                    thumb:"/assests/images/product-12.jpg",
                     intro: "Herschel supply",
                     price:"35.31",
                 },
                 {
-                    img:"/assests/images/product-13.jpg",
+                    thumb:"/assests/images/product-13.jpg",
                     intro: "Herschel supply",
                     price:"24.23",
                 },
                 {
-                    img:"/assests/images/product-16.jpg",
+                    thumb:"/assests/images/product-16.jpg",
                     intro: "Herschel supply",
                     price:"24.23",
                 },
                 {
-                    img:"/assests/images/product-14.jpg",
+                    thumb:"/assests/images/product-14.jpg",
                     intro: "Herschel supply",
                     price:"21.23",
                 },
                 {
-                    img:"/assests/images/product-15.jpg",
+                    thumb:"/assests/images/product-15.jpg",
                     intro: "Herschel supply",
                     price:"1.23",
                 },
@@ -135,12 +136,12 @@ const Index = () => {
             displayName:"Man",
             displayContents:[
                 {
-                    img:"/assests/images/product-04.jpg",
+                    thumb:"/assests/images/product-04.jpg",
                     intro: "Esprit Ruffle Shirt",
                     price:"16.64",
                 },
                 {
-                    img:"/assests/images/product-05.jpg",
+                    thumb:"/assests/images/product-05.jpg",
                     intro: "Herschel supply",
                     price:"35.31",
                 },
