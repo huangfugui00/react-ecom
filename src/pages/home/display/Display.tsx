@@ -55,34 +55,39 @@ const TabDisplay = ({displayContent}:tabDisplayProp)=>{
     )
 }
 
+ 
+const carousels = (displayContents:displayContentType[])=>{
+    const num =Math.ceil( displayContents.length/4);
+    var indents = [];
+    for(let i = 0;i<num;i++){
+        indents.push( <div className={`carousel-item  ${i==0 && 'active'} ` }>
+                <div className='row'>
+                    {displayContents.slice(i*4,(i+1)*4).map((displayContent,index)=>
+                                        //one display
+                                        <TabDisplay displayContent={displayContent}/>
+                                        )}
+                </div>               
+            </div>
+        )
+    }
+    return indents
+}
+
+
 type tabContentsProp = {
     displays:displayType[],
     activeName:string,
 }
 //tabs->tab->display
 const TabContents = ({displays , activeName}:tabContentsProp):JSX.Element =>{
-    
-    const carousels = (displayContents:displayContentType[])=>{
-        const num =Math.ceil( displayContents.length/4);
-        var indents = [];
-        for(let i = 0;i<num;i++){
-            indents.push( <div className={`carousel-item  ${i==0 && 'active'} ` }>
-                    <div className='row'>
-                        {displayContents.slice(i*4,(i+1)*4).map((displayContent,index)=>
-                                            //one display
-                                            <TabDisplay displayContent={displayContent}/>
-                                            )}
-                    </div>               
-                </div>
-            )
-        }
-        return indents
-    }
+   
+    const selectedStyle: React.CSSProperties = {display:'block'}
+    const nullStyle: React.CSSProperties = {display:'none'}
 
     return(
         <div>
             {   displays.map ((display,index)=>
-                <div className={`tab-pane fade show ${display.displayName==activeName && 'active' }`} id={display.displayName} role="tabpanel">
+                <div className={`tab-pane fade show`} style={display.displayName===activeName?selectedStyle:nullStyle} id={display.displayName} role="tabpanel">
                     <div className="display-tab m-auto "  key={index}>
                         <div id={`carousel${index}`} className="carousel slide" data-ride="carousel">
                             {/* //one Tab */}
