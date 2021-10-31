@@ -28,7 +28,7 @@ const Header = () : JSX.Element => {
                             </li>
 
                             <li className="col">
-                                <a  className='' href="blog.html">Blog</a>
+                                <a  className='' href="/shopCart">Blog</a>
                             </li>
 
                             <li className="col">

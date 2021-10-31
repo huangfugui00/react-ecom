@@ -2,6 +2,7 @@ import './App.css';
 import { useState} from 'react'
 import Home from'./pages/home/Home'
 import Shop from'./pages/shop/Shop'
+import ShopCart from './pages/shopCart/ShopCart'
 import ProductDetail from './pages/productDetail/ProductDetail'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -97,7 +98,11 @@ function App() {
           <Route path="/products">
             <ProductDetail product={products[0]}/>
           </Route>
+          <Route path="/shopCart">
+            <ShopCart/>
+          </Route>
           <Route path="/" component={Home}/>         
+         
         </Switch>
         <Footer contact={contact} />
     </Router>

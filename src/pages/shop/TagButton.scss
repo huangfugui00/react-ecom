@@ -1,5 +1,3 @@
-@import '../../assests/css/index.scss';//导入其他css文件
-
 .TagButton{
     margin:auto 0;    
 }
@@ -11,8 +9,7 @@
     border-radius: 5px;
     padding:0.5rem 1rem ;
     &:hover{
-        // background-color:rgba(103,117,214,0.8);;
-        @extend .my-button-bg-color;
+        background-color: var(--btn-bg-color);
         color:white;
     };
 }

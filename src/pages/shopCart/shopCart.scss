@@ -1,0 +1,10 @@
+@import '../../assests/css/index.scss';
+
+.shop-cart{
+    @extend .my-container;
+    margin-top:5rem;
+    margin-bottom: 5rem;
+    #bread{
+        margin-bottom: 3rem;
+    }
+}

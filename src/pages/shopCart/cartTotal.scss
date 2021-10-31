@@ -1,0 +1,23 @@
+.cart-total{ 
+    span{
+        display: block;
+    }
+    #cart-total-number{ 
+        font-size: 1.5rem;
+        color:black;
+    }
+    #cart-total-price{
+        font-size:1.2rem;
+        color:gray;
+        margin: 1rem 0 2rem 0;
+    }
+    button{
+        font-size:1.2rem;
+        padding: 0.5rem 1rem;
+        color:white;
+        background-color: var(--btn-bg-color);
+        border: none;
+        border-radius: 20px;
+    }
+
+}

@@ -87,7 +87,7 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
         
     ] as productType[])
 
-    const [tagButtonSel,setTagButtonSel] = useState('description')
+    const [tagButtonSel,setTagButtonSel] = useState('comments')
 
     return (
         <div className="product-detail ">
@@ -106,9 +106,7 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
             </div> 
             <div id="product-detail-best-seller">
                 <BestSeller bestSellers={bestSellers}/>
-            </div>
-        
-            
+            </div>    
         </div>
     )
 

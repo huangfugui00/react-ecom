@@ -1,0 +1,9 @@
+.nav-bread{ 
+    nav{
+        --bs-breadcrumb-divider: '>';
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+}
