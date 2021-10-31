@@ -32,7 +32,7 @@ const Header = () : JSX.Element => {
                             </li>
 
                             <li className="col">
-                                <a className='' href="about.html">About</a>
+                                <a className='' href="/order">Order</a>
                             </li>
 
                             <li className="col">

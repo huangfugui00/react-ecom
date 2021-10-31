@@ -4,6 +4,7 @@ import Home from'./pages/home/Home'
 import Shop from'./pages/shop/Shop'
 import ShopCart from './pages/shopCart/ShopCart'
 import ProductDetail from './pages/productDetail/ProductDetail'
+import Order from'./pages/order/Order'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import {
@@ -101,6 +102,10 @@ function App() {
           <Route path="/shopCart">
             <ShopCart/>
           </Route>
+          <Route path="/order">
+            <Order/>
+          </Route>
+          
           <Route path="/" component={Home}/>         
          
         </Switch>

@@ -91,7 +91,6 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
 
     return (
         <div className="product-detail ">
-            <hr/>
             <div id="product-detail-content" className="row ">
                 <div className="col-xl-8">
                     <ProductImage productImgs={product.imgs}/>

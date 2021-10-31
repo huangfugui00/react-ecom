@@ -25,15 +25,19 @@ const Shop = ({products}:shopProp) : JSX.Element => {
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
     const [categorySel,setCategorySel] = useState('All')
-    const [displayProducts,setDisplayProducts]=useState(products)
+    // const [displayProducts,setDisplayProducts]=useState(products)
 
-    useEffect(()=>{
-        if(categorySel === 'All'){
-            setDisplayProducts( products )
-        }else{
-            setDisplayProducts( products.filter(prodcut=>prodcut.category === categorySel))
-        }    
-    },[categorySel,products])
+
+    const displayProducts = categorySel==='All'?products:products.filter(product => product.category === categorySel)
+
+
+    // useEffect(()=>{
+    //     if(categorySel === 'All'){
+    //         setDisplayProducts( products )
+    //     }else{
+    //         setDisplayProducts( products.filter(prodcut=>prodcut.category === categorySel))
+    //     }    
+    // },[categorySel,products])
 
     const clickCategorySelEvent = (category:string)=>{
         setCategorySel(category)
@@ -63,7 +67,6 @@ const Shop = ({products}:shopProp) : JSX.Element => {
 
     return (
         <div className="shop">
-            <hr/>
             <div className="shop-content">
                 <div className="shop-category-tag d-flex justify-content-between">
                     <Categories categories={categories} categorySel={categorySel} clickCategorySelEvent={clickCategorySelEvent}/>
