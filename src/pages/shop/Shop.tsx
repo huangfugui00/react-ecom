@@ -25,19 +25,7 @@ const Shop = ({products}:shopProp) : JSX.Element => {
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
     const [categorySel,setCategorySel] = useState('All')
-    // const [displayProducts,setDisplayProducts]=useState(products)
-
-
     const displayProducts = categorySel==='All'?products:products.filter(product => product.category === categorySel)
-
-
-    // useEffect(()=>{
-    //     if(categorySel === 'All'){
-    //         setDisplayProducts( products )
-    //     }else{
-    //         setDisplayProducts( products.filter(prodcut=>prodcut.category === categorySel))
-    //     }    
-    // },[categorySel,products])
 
     const clickCategorySelEvent = (category:string)=>{
         setCategorySel(category)

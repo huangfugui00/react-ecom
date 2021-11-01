@@ -1,40 +1,29 @@
-import React,{useState} from 'react'
+import React from 'react'
 import './deliver.scss'
-export type deliverType = {
-    name:string;
-    address:string;
-    phone:string;
-}
+import {deliverType} from './Order'
 
-const Deliver = () => {
-    const [deliver] = useState(
-        {
-            name:'huangfugui',
-            address:'guangzhou',
-            phone:'15011907102'
-        }  as deliverType
-    )
-    
+
+const Deliver = ({deliver}:{deliver:deliverType}) => {
     return (
         <div className="order-deliver">
             <h3>Delivery</h3>
             <form>
                 <div className="row gap-4">
-                    <div  className="col">
+                    <div  className="col" id="order-deliver-name">
                         <label className="form-label">Name</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" className="form-control" value={deliver.name}/>
                     </div>
-                    <div className="col">
+                    <div className="col" id="order-deliver-phone">
                         <label  className="form-label">Phone</label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" value={deliver.phone}/>
                     </div>
                 </div> 
-                <div >
+                <div id="order-deliver-address">
                     <label  className="form-label">Address</label>
-                    <input type="text" className="form-control" />
+                    <input type="text" className="form-control" value={deliver.address}/>
                 </div>
            
-            <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn">Submit</button>
             </form>
         </div>
     )

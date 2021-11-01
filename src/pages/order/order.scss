@@ -1,5 +1,13 @@
 @import '../../assests/css/index.scss';
 
 .order{
-@extend .my-container;
+    @extend .my-container;
+    #order-deliver{
+        margin-top: 4rem ;
+        margin-bottom: 4rem;
+    }
+    #order-detail{
+        margin-top: 4rem ;
+        margin-bottom: 4rem;
+    }
 }
