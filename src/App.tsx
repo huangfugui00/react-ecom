@@ -1,5 +1,5 @@
 import './App.css';
-import { useState} from 'react'
+import { useState,useEffect} from 'react'
 import Home from'./pages/home/Home'
 import Shop from'./pages/shop/Shop'
 import ShopCart from './pages/shopCart/ShopCart'
@@ -7,6 +7,7 @@ import ProductDetail from './pages/productDetail/ProductDetail'
 import Order from'./pages/order/Order'
 import Header from './components/Header'
 import Footer from './components/Footer'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,11 +15,6 @@ import {
 } from "react-router-dom";
 import React from 'react';
 
-// export type displayContentType={
-//   img:string,
-//   intro: string,
-//   price:string,
-// }
 
 export type contactType = {
   phone:string,
@@ -26,6 +22,7 @@ export type contactType = {
 }
 
 export type productType = {
+  _id:string,
   thumb:string,
   imgs?:string[],
   intro:string,
@@ -37,7 +34,8 @@ export type productType = {
 
 
 function App() {
-  
+
+
   const [contact] = useState(
     {
         phone:"123456",
@@ -45,7 +43,7 @@ function App() {
     } as contactType
   )
 
-  const [products] = useState(
+  const [products,setProducts] = useState(
     [
       {
           thumb:"/assests/images/product-01.jpg",
@@ -89,13 +87,26 @@ function App() {
       },
     ] as productType[]
   )
+
+
+  // useEffect(() => {
+  //   async function fectProducts(){
+  //     const result =  await productServices.getProducts()
+  //     if(result.status===1){
+  //       setProducts(result.data)
+  //     }
+      
+  //   }
+  //   fectProducts()
+  // }, [])
+
   return (
     <Router>
       <Header/>
         <Switch>
           {/* <Route path="/shop"  component={Shop}/> */}
           <Route path="/shop">
-            <Shop products={products}/>
+            <Shop/>
           </Route>
           <Route path="/products">
             <ProductDetail product={products[0]}/>

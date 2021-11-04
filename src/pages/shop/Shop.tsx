@@ -5,15 +5,28 @@ import Search from './Search'
 import Filters from './Filters'
 import Products from './Products'
 import {productType} from '../../App'
+import productServices from '../../services/product'
 import './Shop.scss'
 
 
-type shopProp = {
-    products:productType[]
-}
 
+const Shop = () : JSX.Element => {
+    const [products,setProducts] = useState([] as productType[])
+    
+    useEffect(() => {
+        async function fectProducts(){
+            const result =  await productServices.getProducts()
+            if(result.status===1){
+                for(let i = 0;i<result.data.length;i++){
+                    if (result.data[i].category)
+                        result.data[i].category =  result.data[i].category.title}
+                setProducts(result.data)
+                console.log(products)
+            }
+        }
+        fectProducts()
+    }, [])
 
-const Shop = ({products}:shopProp) : JSX.Element => {
     const categories =[...new Set(products.map((product) =>product.category))]
     let tags: string[] = []
     for(let i =0;i<products.length;i++) {

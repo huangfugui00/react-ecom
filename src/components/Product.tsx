@@ -1,5 +1,6 @@
 import React from 'react'
 import {productType} from '../App'
+import config from '../config/config'
 import './Product.scss'
 
 
@@ -11,14 +12,14 @@ const Product = ({product}:productProp):JSX.Element => {
     return (
         <div className="component-product ">
             <div id="component-product-image" className=" d-flex flex-columm justify-content-center">
-                <img src={product.thumb} alt=""/>
+                <img src={`${config.api}/${product.thumb}`} alt=""/>
                 <a href="/#">
                     Quick View
                 </a>
             </div>
             
             <div id="component-product-intro" className="d-flex justify-content-between mt-2">
-                <span ><a href="/#">{product.intro}</a></span>
+                <span ><a href={`product/${product._id}`}>{product.intro}</a></span>
                 <i className="bi-heart" ></i>
             </div>
 
