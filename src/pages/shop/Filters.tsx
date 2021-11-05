@@ -1,53 +1,47 @@
 import './Filters.scss'
-const SortByType = ()=>{
+import config from '../../config/config'
+
+const clickStyle: React.CSSProperties = {textDecoration:'underline',color:'rgba(103,117,214,0.8)'}
+const nullStyle: React.CSSProperties = {}
+
+type SortByTypeProp={
+    sortTypeSel:string,
+    clickSortTypeEvent:(sortType:string)=>void
+}
+
+const SortByType = ({sortTypeSel,clickSortTypeEvent}:SortByTypeProp)=>{
     return(
         <div className="shop-sort-by-type col-xl-3 col-md-6">
             <h5>Sort By</h5>
             <ul>
-                <li>    
-                    <a>Default</a>
-                </li>
-                <li>
-                    <a>Popularity</a>
-                </li>
-                <li>
-                    <a>Average rating</a>
-                </li>
-                <li>
-                    <a>Newness</a>
-                </li>
-                <li>
-                    <a>Price:Low to High</a>
-                </li>
-                <li>
-                    <a>Price:High to Low</a>
-                </li>
+                {config.sortTypes.map(sortType=>
+                <li style={sortType === sortTypeSel?clickStyle:nullStyle}
+                onClick={()=>clickSortTypeEvent(sortType)}>
+                     <span>{sortType}</span>
+                </li>)
+                }
             </ul>
         </div>
     )
 }
 
 
-const Price = ()=>{
+type priceProp = {
+    priceSel:number[],
+    clickPriceSelEvent:(priceSel:number[])=>void
+}
+
+const Price = ({priceSel,clickPriceSelEvent}:priceProp)=>{
     return(
         <div className="shop-sort-by-price col-xl-3 col-md-6">
             <h5>Price</h5>
             <ul>
-                <li>
-                    <a>All</a>
-                </li>
-                <li>
-                    <a>$0.00 - $50.00</a>
-                </li>
-                <li>
-                    <a>$50.00-$100.00</a>
-                </li>
-                <li>
-                    <a>$100.00-$200.00</a>
-                </li>
-                <li>
-                    <a>$200.00+</a>
-                </li>
+                {config.prices.map(price=>
+                <li style={JSON.stringify(priceSel)===JSON.stringify(price)?clickStyle:nullStyle} 
+                onClick={()=>clickPriceSelEvent(price)}>
+                    <span>{price.length===2? `$${price[0]}-$${price[1]}`:`$${price[0]}+`}</span>
+                </li>)
+                }
             </ul>
         </div>
     )
@@ -82,16 +76,20 @@ type filtersProp = {
     display:string,
     tags:string[],
     tagSel:string,
-    clickTagSelEvent:(tagSel:string)=>void
+    clickTagSelEvent:(tagSel:string)=>void,
+    priceSel:number[],
+    clickPriceSelEvent:(tagSel:number[])=>void,
+    sortTypeSel:string,
+    clickSortTypeEvent:(sortTypeSel:string)=>void,
 }
 
 
-const Filters = ({display,tags,tagSel,clickTagSelEvent}:filtersProp):JSX.Element => {
+const Filters = ({display,tags,tagSel,clickTagSelEvent,priceSel,clickPriceSelEvent,sortTypeSel,clickSortTypeEvent}:filtersProp):JSX.Element => {
     return (
         <div className="shop-filter" style={{display: display}}>
             <div className="row justify-content-between gap-4 w-100">
-                <SortByType /> 
-                <Price/>
+                <SortByType sortTypeSel={sortTypeSel} clickSortTypeEvent={clickSortTypeEvent}/> 
+                <Price priceSel={priceSel} clickPriceSelEvent={clickPriceSelEvent}/>
                 <Tags tags={tags} tagSel={tagSel} clickTagSelEvent={clickTagSelEvent}/>
             </div>
         </div>

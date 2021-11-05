@@ -62,27 +62,27 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
         {
             thumb:"/assests/images/product-01.jpg",
             intro: "Esprit Ruffle Shirt",
-            price:"16.64",
+            price:16.64,
         },
         {
             thumb:"/assests/images/product-02.jpg",
             intro: "Herschel supply",
-            price:"35.31",
+            price:35.31,
         },
         {
             thumb:"/assests/images/product-03.jpg",
             intro: "Herschel supply",
-            price:"24.23",
+            price:24.23,
         },
         {
             thumb:"/assests/images/product-06.jpg",
             intro: "Herschel supply",
-            price:"24.23",
+            price:24.23,
         },
         {
             thumb:"/assests/images/product-08.jpg",
             intro: "Herschel supply",
-            price:"21.23",
+            price:21.23,
         },
         
     ] as productType[])

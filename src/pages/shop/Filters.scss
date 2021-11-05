@@ -20,9 +20,9 @@
             padding: 0.5rem 0;
             font-size:1.2rem;
             color:rgba(128, 128, 128, 0.72);
-            &:hover{
+            span:hover{
                 color:var(--btn-bg-color);
-                text-decoration: underline;
+                // text-decoration: underline;
                 cursor: pointer;
             }
         }

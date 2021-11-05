@@ -40,11 +40,23 @@ const Shop = () : JSX.Element => {
     const [categorySel,setCategorySel] = useState('All')
     const [tagSel,setTagSel] = useState('')
     const [searchItem,setSearchItem] = useState('')
+    const [sortTypeSel,setSortTypeSel]= useState('')
+    const [priceSel,setPriceSel]= useState([] as number[])
+
+
     let displayProducts = categorySel==='All'?products:products.filter(product => product.category === categorySel)
     displayProducts = tagSel===''?displayProducts:displayProducts.filter(product => product.tags?.includes(tagSel))
     displayProducts = searchItem===''?displayProducts:displayProducts.filter(product => product.intro?.includes(searchItem))
-
+    displayProducts = JSON.stringify(priceSel)===JSON.stringify([])?displayProducts:displayProducts.filter(product => product.price>=priceSel[0]&&product.price<=priceSel[1])
     
+
+    const clickPriceSelEvent = (price:number[])=>{
+        JSON.stringify(priceSel)===JSON.stringify(price)?setPriceSel([]):setPriceSel(price)
+    }
+    
+    const clickSortTypeEvent = (sortType:string)=>{
+        sortType===sortTypeSel?setSortTypeSel(''):setSortTypeSel(sortType)
+    }
 
     const clickCategorySelEvent = (category:string)=>{
         setCategorySel(category)
@@ -89,7 +101,11 @@ const Shop = () : JSX.Element => {
                     />
                 </div>  
                 <Search display={displaySearch} searchItem={searchItem} searchChangeEvent={searchChangeEvent}/>
-                <Filters display={displayFilters} tags={tags} tagSel={tagSel} clickTagSelEvent={clickTagSelEvent}/>
+                <Filters display={displayFilters} tags={tags} 
+                tagSel={tagSel} clickTagSelEvent={clickTagSelEvent}
+                priceSel={priceSel} clickPriceSelEvent={clickPriceSelEvent}
+                sortTypeSel={sortTypeSel} clickSortTypeEvent={clickSortTypeEvent}
+                />
                 <Products products={displayProducts}/>
             </div>    
         </div>  
