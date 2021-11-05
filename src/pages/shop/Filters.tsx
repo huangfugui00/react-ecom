@@ -55,15 +55,20 @@ const Price = ()=>{
 
 type tagsProp = {
     tags:string[],
+    tagSel:string,
+    clickTagSelEvent:(tagSel:string)=>void,
 }
 
-const Tags = ({tags}:tagsProp):JSX.Element=>{
+const Tags = ({tags,tagSel,clickTagSelEvent}:tagsProp):JSX.Element=>{
+    const clickStyle: React.CSSProperties = {color:'white',backgroundColor:'rgba(103,117,214,0.8)'}
+    const nullStyle: React.CSSProperties = {}
+    
     return(
         <div className="shop-filter-by-tag col-xl-3 col-md-6">
             <h5>Tags</h5>          
             <div className="row">
                 {tags.map((tag)=>
-                    <button className="col">
+                    <button className="col" style={tagSel===tag?clickStyle:nullStyle} onClick={()=>{clickTagSelEvent(tag)}}>
                         {tag}
                     </button>
                 )}
@@ -76,16 +81,18 @@ const Tags = ({tags}:tagsProp):JSX.Element=>{
 type filtersProp = {
     display:string,
     tags:string[],
+    tagSel:string,
+    clickTagSelEvent:(tagSel:string)=>void
 }
 
 
-const Filters = ({display,tags}:filtersProp):JSX.Element => {
+const Filters = ({display,tags,tagSel,clickTagSelEvent}:filtersProp):JSX.Element => {
     return (
         <div className="shop-filter" style={{display: display}}>
             <div className="row justify-content-between gap-4 w-100">
                 <SortByType /> 
                 <Price/>
-                <Tags tags={tags}/>
+                <Tags tags={tags} tagSel={tagSel} clickTagSelEvent={clickTagSelEvent}/>
             </div>
         </div>
     )

@@ -38,10 +38,22 @@ const Shop = () : JSX.Element => {
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
     const [categorySel,setCategorySel] = useState('All')
-    const displayProducts = categorySel==='All'?products:products.filter(product => product.category === categorySel)
+    const [tagSel,setTagSel] = useState('')
+    const [searchItem,setSearchItem] = useState('')
+    let displayProducts = categorySel==='All'?products:products.filter(product => product.category === categorySel)
+    displayProducts = tagSel===''?displayProducts:displayProducts.filter(product => product.tags?.includes(tagSel))
+    displayProducts = searchItem===''?displayProducts:displayProducts.filter(product => product.intro?.includes(searchItem))
+
+    
 
     const clickCategorySelEvent = (category:string)=>{
         setCategorySel(category)
+    }
+    const clickTagSelEvent = (tag:string)=>{
+        tag===tagSel?setTagSel(''):setTagSel(tag)
+    }
+    const searchChangeEvent = (searchInputItem:string)=>{
+        setSearchItem(searchInputItem)
     }
 
     const clickSearchBtnEvent = ()=>{
@@ -76,8 +88,8 @@ const Shop = () : JSX.Element => {
                     clickFiltersBtnEvent={clickFiltersBtnEvent}
                     />
                 </div>  
-                <Search display={displaySearch}/>
-                <Filters display={displayFilters} tags={tags}/>
+                <Search display={displaySearch} searchItem={searchItem} searchChangeEvent={searchChangeEvent}/>
+                <Filters display={displayFilters} tags={tags} tagSel={tagSel} clickTagSelEvent={clickTagSelEvent}/>
                 <Products products={displayProducts}/>
             </div>    
         </div>  
