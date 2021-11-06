@@ -72,6 +72,7 @@ const Index = () => {
                     thumb:"/assests/images/product-01.jpg",
                     intro: "Esprit Ruffle Shirt",
                     price:16.64,
+                    favorite:2,
                 },
                 {
                     thumb:"/assests/images/product-02.jpg",

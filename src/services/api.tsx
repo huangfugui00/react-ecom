@@ -1,4 +1,5 @@
-const axios = require('axios')
+// const axios = require('axios')
+import axios from 'axios'
 
 function api(){
   const axiosInstance = axios.create({
@@ -24,4 +25,4 @@ function api(){
 }
 
 
-module.exports = api;
+export default api

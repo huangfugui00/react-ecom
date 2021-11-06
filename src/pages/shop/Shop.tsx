@@ -8,33 +8,55 @@ import {productType} from '../../App'
 import productServices from '../../services/product'
 import './Shop.scss'
 
-
+const sortDisplayProduct = (displayProducts:productType[],sortTypeSel:string)=>{
+    if(sortTypeSel === 'Price:Low to High'){
+        return displayProducts.sort((a,b)=>a.price-b.price)
+    }
+    if(sortTypeSel === 'Price:High to Low'){
+        return displayProducts.sort((a,b)=>b.price-a.price)
+    }
+    if(sortTypeSel === 'Popularity'){
+        return displayProducts.sort((a,b)=>b.favorite-a.favorite)
+    }
+    if(sortTypeSel === 'Newness'){
+        return displayProducts.sort((a,b)=>Number(new Date(b.createdAt))-Number(new Date(a.createdAt)) )
+    }
+    if(sortTypeSel === 'Average rating'){
+        return displayProducts.sort((a,b)=>b.rate-a.rate)
+    }
+    return displayProducts
+}
 
 const Shop = () : JSX.Element => {
-    const [products,setProducts] = useState([] as productType[])
-    
     useEffect(() => {
         async function fectProducts(){
             const result =  await productServices.getProducts()
             if(result.status===1){
-                for(let i = 0;i<result.data.length;i++){
-                    if (result.data[i].category)
-                        result.data[i].category =  result.data[i].category.title}
-                setProducts(result.data)
-                console.log(products)
+                const productsFromApi = result.data
+                for(let i = 0;i<productsFromApi.length;i++){
+                    if (productsFromApi[i].category)
+                        productsFromApi[i].category =  productsFromApi[i].category.title}
+                    //to rate from comment
+                for(let i = 0;i<productsFromApi.length;i++){    
+                    productsFromApi[i]['rate'] = 0
+                    if(productsFromApi[i].comments.length>0){
+                       const commentNum = productsFromApi[i].comments.length
+                       let rateSum = 0
+                       for(let j =0 ;j<commentNum;j++){
+                        const comment =productsFromApi[i].comments[j]
+                        rateSum = rateSum+comment.rate
+                       }
+                       const averageRate = rateSum/commentNum;
+                       productsFromApi[i]['rate'] = averageRate
+                    }
+                }
+                setProducts(productsFromApi)
             }
         }
         fectProducts()
     }, [])
 
-    const categories =[...new Set(products.map((product) =>product.category))]
-    let tags: string[] = []
-    for(let i =0;i<products.length;i++) {
-        if( products[i].tags !==undefined ) {
-            products[i].tags?.forEach(element=>tags.push(element))
-        }
-    }
-    tags=[...new Set(tags)]
+    const [products,setProducts] = useState([] as productType[])
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
     const [categorySel,setCategorySel] = useState('All')
@@ -42,13 +64,6 @@ const Shop = () : JSX.Element => {
     const [searchItem,setSearchItem] = useState('')
     const [sortTypeSel,setSortTypeSel]= useState('')
     const [priceSel,setPriceSel]= useState([] as number[])
-
-
-    let displayProducts = categorySel==='All'?products:products.filter(product => product.category === categorySel)
-    displayProducts = tagSel===''?displayProducts:displayProducts.filter(product => product.tags?.includes(tagSel))
-    displayProducts = searchItem===''?displayProducts:displayProducts.filter(product => product.intro?.includes(searchItem))
-    displayProducts = JSON.stringify(priceSel)===JSON.stringify([])?displayProducts:displayProducts.filter(product => product.price>=priceSel[0]&&product.price<=priceSel[1])
-    
 
     const clickPriceSelEvent = (price:number[])=>{
         JSON.stringify(priceSel)===JSON.stringify(price)?setPriceSel([]):setPriceSel(price)
@@ -89,6 +104,26 @@ const Shop = () : JSX.Element => {
     }
 
 
+    const categories =[...new Set(products.map((product) =>product.category))]
+
+    let tags: string[] = []
+    for(let i =0;i<products.length;i++) {
+        if( products[i].tags !==undefined ) {
+            products[i].tags?.forEach(element=>tags.push(element))
+        }
+    }
+    tags=[...new Set(tags)]
+    let displayProducts = products.slice()
+    displayProducts = categorySel==='All'?displayProducts:displayProducts.filter(product => product.category === categorySel)
+    displayProducts = tagSel===''?displayProducts:displayProducts.filter(product => product.tags?.includes(tagSel))
+    displayProducts = searchItem===''?displayProducts:displayProducts.filter(product => product.intro?.includes(searchItem))
+    displayProducts = JSON.stringify(priceSel)===JSON.stringify([])?displayProducts:displayProducts.filter(product => product.price>=priceSel[0]&&product.price<=priceSel[1])
+    // displayProducts = sortTypeSel === 'Price:Low to High'? displayProducts.sort((a,b)=>a.price-b.price):displayProducts
+    // displayProducts = sortTypeSel === 'Price:High to Low'? displayProducts.sort((a,b)=>b.price-a.price):displayProducts
+   
+    displayProducts = sortDisplayProduct(displayProducts,sortTypeSel)
+
+   
 
     return (
         <div className="shop">

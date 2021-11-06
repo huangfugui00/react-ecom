@@ -20,7 +20,11 @@ const Product = ({product}:productProp):JSX.Element => {
             
             <div id="component-product-intro" className="d-flex justify-content-between mt-2">
                 <span ><a href={`product/${product._id}`}>{product.intro}</a></span>
+                <div>
                 <i className="bi-heart" ></i>
+                <span>{product.favorite>0?product.favorite:''}</span>
+                </div>
+                
             </div>
 
             <div id="component-product-price" className="d-flex">

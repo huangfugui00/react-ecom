@@ -31,8 +31,9 @@ export type productType = {
   category:string,
   tags?:string[],
   favorite:number,
-  created:string,
+  createdAt:string,
   averageRate:number,
+  rate:number,
 }
 
 
