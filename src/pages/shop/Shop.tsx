@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react'
+import { RouteComponentProps} from "react-router-dom";
 import Categories from './Categories'
 import TagButton from './TagButton'
 import Search from './Search'
@@ -6,6 +7,7 @@ import Filters from './Filters'
 import Products from './Products'
 import {productType} from '../../App'
 import productServices from '../../services/product'
+import {getQuery} from '../../util/util'
 import './Shop.scss'
 
 const sortDisplayProduct = (displayProducts:productType[],sortTypeSel:string)=>{
@@ -27,7 +29,11 @@ const sortDisplayProduct = (displayProducts:productType[],sortTypeSel:string)=>{
     return displayProducts
 }
 
-const Shop = () : JSX.Element => {
+type shopProp ={
+    category:string
+}
+
+const Shop = ({match,location}: RouteComponentProps<shopProp>) : JSX.Element => {
     useEffect(() => {
         async function fectProducts(){
             const result =  await productServices.getProducts()
@@ -55,6 +61,15 @@ const Shop = () : JSX.Element => {
         }
         fectProducts()
     }, [])
+
+    useEffect(()=>{
+        if(location){
+           const categorySel =  getQuery(location.search,'category')
+           if(categorySel!==null){
+                setCategorySel(categorySel)
+           }
+        }
+    },[])
 
     const [products,setProducts] = useState([] as productType[])
     const [displaySearch,setDisplaySearch ] = useState('none')
@@ -118,9 +133,6 @@ const Shop = () : JSX.Element => {
     displayProducts = tagSel===''?displayProducts:displayProducts.filter(product => product.tags?.includes(tagSel))
     displayProducts = searchItem===''?displayProducts:displayProducts.filter(product => product.intro?.includes(searchItem))
     displayProducts = JSON.stringify(priceSel)===JSON.stringify([])?displayProducts:displayProducts.filter(product => product.price>=priceSel[0]&&product.price<=priceSel[1])
-    // displayProducts = sortTypeSel === 'Price:Low to High'? displayProducts.sort((a,b)=>a.price-b.price):displayProducts
-    // displayProducts = sortTypeSel === 'Price:High to Low'? displayProducts.sort((a,b)=>b.price-a.price):displayProducts
-   
     displayProducts = sortDisplayProduct(displayProducts,sortTypeSel)
 
    

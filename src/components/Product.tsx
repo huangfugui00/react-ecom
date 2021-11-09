@@ -1,4 +1,5 @@
 import React from 'react'
+// import { Link } from 'react-router';
 import {productType} from '../App'
 import config from '../config/config'
 import './Product.scss'
@@ -19,7 +20,7 @@ const Product = ({product}:productProp):JSX.Element => {
             </div>
             
             <div id="component-product-intro" className="d-flex justify-content-between mt-2">
-                <span ><a href={`product/${product._id}`}>{product.intro}</a></span>
+                <span ><a href={`/product/${product._id}`}>{product.intro}</a></span>
                 <div>
                 <i className="bi-heart" ></i>
                 <span>{product.favorite>0?product.favorite:''}</span>

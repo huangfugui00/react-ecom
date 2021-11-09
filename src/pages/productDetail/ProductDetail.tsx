@@ -1,93 +1,74 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import { RouteComponentProps,Redirect} from "react-router-dom";
 import ProductImage from './ProductImage'
 import ProductIntro from './ProductIntro'
 import TagButtons from './TagButtons'
 import TagContent from './TagContent'
 import BestSeller from './BestSeller'
 import {productType} from '../../App'
-
+import productServices from '../../services/product'
 import './ProductDetail.scss'
 
 
 type productDetailProp={
-    product:productType
+    id:string
 }
 
 export type commentType = {
     username:string,
     content:string,
-    start:number,
+    star:number,
     thumbUrl:string,
 }
 
 
-const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
-
-    const [comments] = useState(
-        [
-            {
-                username:"jock",
-                content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-                start:5,
-                thumbUrl:"/assests/images/thumb-01.jpg"
-            },
-            {
-                username:"jock2",
-                content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-                start:5,
-                thumbUrl:"/assests/images/thumb-02.jpg"
-            },
-            {
-                username:"jock3",
-                content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-                start:5,
-                thumbUrl:"/assests/images/slide-07.jpg"
-            },
-            {
-                username:"jock4",
-                content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-                start:5,
-                thumbUrl:"/assests/images/product-01.jpg"
-            },
-            {
-                username:"jock5",
-                content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-                start:5,
-                thumbUrl:"/assests/images/slide-07.jpg"
+const ProductDetail = ({ match,history }: RouteComponentProps<productDetailProp>) : JSX.Element=> {
+    useEffect(() => {
+        const fetchProduct = async()=>{
+            let result = await productServices.getProduct(match.params.id)
+                .catch(err=>err)
+            if(result.status===0){
+               return history.replace('/')
             }
-        ] as commentType[]
+            const product = result.data
+            product.category = product.category?product.category.title:''
+            setProduct(product)
+
+            result = await productServices.getProducts(product.category?`category=${product.category}`:'')
+                .catch(err=>err)
+            if(result.status===1){
+                setBestSellers(result.data)
+            }
+           
+            //to comments
+            for(let i = 0 ;i< product.comments.length;i++){
+                product.comments[i].username =  product.comments[i].userId.username
+                product.comments[i].thumbUrl =  product.comments[i].userId.avatar
+                product.comments[i].star = product.comments[i].rate
+                product.comments[i].content = product.comments[i].text
+            }
+            setComments(product.comments)
+            //to BestSellers
+        }
+        
+        fetchProduct()
+
+        
+    }, [])
+
+    const [product,setProduct] = useState({} as productType)
+
+    const [comments,setComments] = useState(
+        [] as commentType[]
     )
 
-    const [bestSellers]= useState( [
-        {
-            thumb:"/assests/images/product-01.jpg",
-            intro: "Esprit Ruffle Shirt",
-            price:16.64,
-        },
-        {
-            thumb:"/assests/images/product-02.jpg",
-            intro: "Herschel supply",
-            price:35.31,
-        },
-        {
-            thumb:"/assests/images/product-03.jpg",
-            intro: "Herschel supply",
-            price:24.23,
-        },
-        {
-            thumb:"/assests/images/product-06.jpg",
-            intro: "Herschel supply",
-            price:24.23,
-        },
-        {
-            thumb:"/assests/images/product-08.jpg",
-            intro: "Herschel supply",
-            price:21.23,
-        },
-        
-    ] as productType[])
+    const [bestSellers,setBestSellers]= useState( [] as productType[])
 
     const [tagButtonSel,setTagButtonSel] = useState('comments')
+
+    const addCommentEvent = (comment:commentType)=>{
+        setComments([...comments,comment])
+    }
 
     return (
         <div className="product-detail ">
@@ -101,7 +82,7 @@ const ProductDetail = ({product}:productDetailProp) : JSX.Element=> {
             </div>
             <div id="product-detail-data">
                 <TagButtons setTagButtonSel={setTagButtonSel} tagButtonSel={tagButtonSel}/>
-                <TagContent tagButtonSel={tagButtonSel} product = {product} comments={comments}/>
+                <TagContent tagButtonSel={tagButtonSel} product = {product} comments={comments} addCommentEvent={addCommentEvent}/>
             </div> 
             <div id="product-detail-best-seller">
                 <BestSeller bestSellers={bestSellers}/>

@@ -9,6 +9,28 @@ type productIntroProp = {
 
 const ProductIntro = ({product}:productIntroProp) => {
     const [buyNum,setBuyNum]=useState(1)
+    const clickFavoriteEvent = ()=>{
+        const data={
+            productId:product._id,
+        }
+        // const result = await product
+    }
+
+    // const postComment =async (e:React.FormEvent)=>{
+    //     e.preventDefault()
+    //     const data={
+    //         productId:productId,
+    //         text:text,       
+    //         rate:star
+    //     }
+
+    //     const result = await commentServices.createComment(data)
+    //                     .catch(err=>err)
+    //     if(result.status===1){
+    //         addCommentEvent({username:user.username,thumbUrl:user.avatar,content:text,star:star})
+    //     }
+
+    // }
 
     return (
         <div className="product-intro">
@@ -20,11 +42,10 @@ const ProductIntro = ({product}:productIntroProp) => {
             <p id="intro">{product.intro}</p>
             <span id="price">${product.price}</span>
             <div className="d-flex flex-column gap-2">
-            <span id="category">Category: <span>{product.category}</span></span>
+            <span id="category">Category: <a href={`/shop?category=${product.category}`}>{product.category}</a></span>
             <span id="available">Available: <span>In Stock</span></span>
             </div>
            
-
             <hr/>
             <p>{product.description}</p>
             <hr/>
@@ -35,7 +56,7 @@ const ProductIntro = ({product}:productIntroProp) => {
                     <i className="bi bi-plus" onClick={() =>{setBuyNum(buyNum+1)}}/>
                 </div>
                 <button  id="add-cart">ADD TO CART</button>
-                <i id="favorite" className="bi bi-heart"/>
+                <i id="favorite" className="bi bi-heart" onClick={clickFavoriteEvent}/>
             </div>
            
         </div>

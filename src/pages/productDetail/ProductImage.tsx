@@ -1,6 +1,7 @@
 import './ProductImage.scss'
-import React, {useState} from 'react'
-
+import React, {useState,useEffect} from 'react'
+import config from '../../config/config'
+// import Products from '../shop/Products'
 type productImgListsProp={
     productImgs?:string[],
     productImgDisplay:string,
@@ -14,7 +15,7 @@ const ProductImgLists = ({productImgs,productImgDisplay,clickProductImgEvent}:pr
             <div className="product-img-lists">
                 {
                     productImgs.map((productImg)=>
-                    <img  src={productImg} alt={productImg} 
+                    <img  src={`${config.api}/${productImg}`} alt={productImg} 
                     className={`${productImgDisplay===productImg   &&'img-click'}`}
                     onClick={()=>{clickProductImgEvent(productImg)}}
                     />
@@ -37,9 +38,9 @@ type productImgDisplayProp = {
 
 const ProductImgDisplay = ({productImgDisplay}:productImgDisplayProp)=>{
     return(
-        <div  className=" product-img-display">
-            <div>
-                <img src={productImgDisplay} className="d-block w-100" alt="..."/>
+        <div>
+            <div className="product-img-display">
+                <img src={`${config.api}/${productImgDisplay}`}  alt="..."/>
             </div>
         </div>
     )
@@ -51,9 +52,14 @@ type productImageProp ={
 } 
 
 const ProductImage = ({productImgs}:productImageProp) => {
-  
-    const initValue = productImgs!==undefined?productImgs[0]:""
-    const [productImgDisplay,setProductImgDisplay] = useState(initValue)
+
+    useEffect(() => {
+        if(productImgs&&productImgs.length>0){
+            setProductImgDisplay(productImgs[0])    
+        }
+    }, [productImgs])
+   
+    const [productImgDisplay,setProductImgDisplay] = useState('')
 
     const clickProductImgEvent = (imgToDisplay:string)=>{
         setProductImgDisplay(imgToDisplay)

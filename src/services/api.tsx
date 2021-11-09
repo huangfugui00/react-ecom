@@ -14,11 +14,12 @@ function api(){
 
   axiosInstance.interceptors.response.use(
     (response) => response.data,
-    (error) => {
+    (error) => {//服务端出错时会触发
       if (error.response.status === 401) {
         localStorage.removeItem('token')
       }
-      return Promise.reject(error)
+      error.response.data.data = error.response.statusText
+      return error.response.data
     }
   )
   return axiosInstance

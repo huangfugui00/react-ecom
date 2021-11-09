@@ -9,13 +9,14 @@ type tagContentProp = {
     tagButtonSel:string,
     product :productType,
     comments:commentType[],
+    addCommentEvent:(newComment:commentType)=>void
 }
 
-const TagContent = ({tagButtonSel,product,comments}:tagContentProp) => {
+const TagContent = ({tagButtonSel,product,comments,addCommentEvent}:tagContentProp) => {
     return (
         <div className="product-detail-tag-content">
             <Description description={product.description} tagButtonSel={tagButtonSel}/>
-            <Comments tagButtonSel={tagButtonSel} comments={comments}/>
+            <Comments tagButtonSel={tagButtonSel} productId = {product._id} comments={comments} addCommentEvent={addCommentEvent}/>
         </div>
     )
 }
