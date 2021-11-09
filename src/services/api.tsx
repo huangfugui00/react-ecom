@@ -13,7 +13,10 @@ function api(){
   }
 
   axiosInstance.interceptors.response.use(
-    (response) => response.data,
+    (response) => {
+      console.log(response.data)
+      return response.data
+    },
     (error) => {//服务端出错时会触发
       if (error.response.status === 401) {
         localStorage.removeItem('token')

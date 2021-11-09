@@ -1,7 +1,7 @@
 import './ProductIntro.scss'
-
 import React,{useState} from 'react'
 import {productType} from '../../App'
+import Favorite from '../../components/Favorite'
 
 type productIntroProp = {
     product:productType
@@ -9,28 +9,7 @@ type productIntroProp = {
 
 const ProductIntro = ({product}:productIntroProp) => {
     const [buyNum,setBuyNum]=useState(1)
-    const clickFavoriteEvent = ()=>{
-        const data={
-            productId:product._id,
-        }
-        // const result = await product
-    }
 
-    // const postComment =async (e:React.FormEvent)=>{
-    //     e.preventDefault()
-    //     const data={
-    //         productId:productId,
-    //         text:text,       
-    //         rate:star
-    //     }
-
-    //     const result = await commentServices.createComment(data)
-    //                     .catch(err=>err)
-    //     if(result.status===1){
-    //         addCommentEvent({username:user.username,thumbUrl:user.avatar,content:text,star:star})
-    //     }
-
-    // }
 
     return (
         <div className="product-intro">
@@ -56,7 +35,8 @@ const ProductIntro = ({product}:productIntroProp) => {
                     <i className="bi bi-plus" onClick={() =>{setBuyNum(buyNum+1)}}/>
                 </div>
                 <button  id="add-cart">ADD TO CART</button>
-                <i id="favorite" className="bi bi-heart" onClick={clickFavoriteEvent}/>
+                <Favorite productId={product._id}/>
+                {/* <i id="favorite" className="bi bi-heart" onClick={clickFavoriteEvent}/> */}
             </div>
            
         </div>

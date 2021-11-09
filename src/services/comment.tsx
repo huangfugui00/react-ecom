@@ -1,4 +1,3 @@
-// const api = require('./api')
 import api from './api'
 
 const commentServices = {
