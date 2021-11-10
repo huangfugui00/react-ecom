@@ -1,5 +1,6 @@
 import './App.css';
-import { useState,useEffect} from 'react'
+import { useState} from 'react'
+import RouteRequiresLogin from './components/RouteRequiresLogin'
 import Home from'./pages/home/Home'
 import Shop from'./pages/shop/Shop'
 import ShopCart from './pages/shopCart/ShopCart'
@@ -7,6 +8,7 @@ import ProductDetail from './pages/productDetail/ProductDetail'
 import Order from'./pages/order/Order'
 import Header from './components/Header'
 import Footer from './components/Footer'
+
 
 import {
   BrowserRouter as Router,
@@ -79,15 +81,17 @@ function App() {
         <Switch>
           <Route path="/shop"  component={Shop}/>
           <Route path="/product/:id" component={ProductDetail} exact/>
-          <Route path="/shopCart">
-            <ShopCart/>
-          </Route>
+          <RouteRequiresLogin path='/shopCart'>
+              {ShopCart}
+            </RouteRequiresLogin>
+
+          
+          {/* {auth()? <Route path="/shopCart" component={ShopCart}/>:<></> } */}
+           
           <Route path="/order">
             <Order/>
           </Route>
-          
           <Route path="/" component={Home}/>         
-         
         </Switch>
         <Footer contact={contact} />
       </userContext.Provider>

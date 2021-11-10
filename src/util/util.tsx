@@ -5,3 +5,11 @@ export const getQuery = (urlParam:string,param:string)=>{//从url中抽取key va
     }
     return subString
 }
+
+export const auth = ()=>{
+    const loggedIn = localStorage.getItem('token')
+    if ( !loggedIn) {
+        return false
+    } 
+    return true
+}

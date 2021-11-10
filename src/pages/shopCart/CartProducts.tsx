@@ -26,20 +26,20 @@ const CartProducts = ({cartProducts}:cartProductsProp):JSX.Element => {
                       <tr>
                         <td><input type="checkbox" id="checkProduct"/></td>
                         <td>
-                            <img src={cartProduct.thumb} alt={cartProduct.intro}/>
-                            <a href="/#">{cartProduct.intro}</a>
+                            <img src={cartProduct.product.thumb} alt={cartProduct.product.intro}/>
+                            <a href="/#">{cartProduct.product.intro}</a>
                         </td>
-                        <td>{cartProduct.price}</td>
+                        <td>{cartProduct.product.price}</td>
 
                         <td>
                             <div id="product-buy-num" className="d-flex">
                                 <i className="bi bi-dash" />
-                                <input value={cartProduct.number} />
+                                <input value={cartProduct.numInCart} />
                                 <i className="bi bi-plus" />
                             </div>
                         </td>
                         {/* <td>{cartProduct.number}</td> */}
-                        <td>{cartProduct.price*cartProduct.number}</td>
+                        <td>{cartProduct.product.price*cartProduct.numInCart}</td>
                         <td><i className="bi bi-trash"/></td>
                     </tr>
                     )}
