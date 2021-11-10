@@ -2,13 +2,19 @@ import './ProductIntro.scss'
 import React,{useState} from 'react'
 import {productType} from '../../App'
 import Favorite from '../../components/Favorite'
+import Alert from '../../components/Alert'
 
 type productIntroProp = {
     product:productType
 }
 
 const ProductIntro = ({product}:productIntroProp) => {
-    const [buyNum,setBuyNum]=useState(1)
+    const [buyNum,setBuyNum]=useState(1) 
+    const [alertMessage,setAlertMessage] = useState('')
+    const addToCart = ()=>{
+        
+        setAlertMessage('add success')
+    }
 
 
     return (
@@ -34,10 +40,12 @@ const ProductIntro = ({product}:productIntroProp) => {
                     <input value={buyNum}  onChange={(e)=>{setBuyNum(parseInt(e.target.value))}}/>
                     <i className="bi bi-plus" onClick={() =>{setBuyNum(buyNum+1)}}/>
                 </div>
-                <button  id="add-cart">ADD TO CART</button>
-                <Favorite productId={product._id}/>
-                {/* <i id="favorite" className="bi bi-heart" onClick={clickFavoriteEvent}/> */}
+                <button  id="add-cart" onClick={addToCart}>ADD TO CART</button>
+                <div id="favorite">
+                    <Favorite productId={product._id}/>
+                </div>                
             </div>
+            <Alert message={alertMessage}/>
            
         </div>
     )

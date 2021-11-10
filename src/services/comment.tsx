@@ -7,5 +7,4 @@ const commentServices = {
 }
 
 
-// module.exports = productServices
 export default commentServices

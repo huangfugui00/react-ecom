@@ -3,6 +3,8 @@ import {commentType} from './ProductDetail'
 import config from '../../config/config'
 import {userContext} from '../../App'
 import commentServices  from '../../services/comment'
+import Alert from '../../components/Alert'
+
 
 import './Comments.scss'
 
@@ -69,6 +71,7 @@ type addCommentProp={
 
 
 const AddComment = ({productId,addCommentEvent}:addCommentProp)=>{
+    const [alertMessage,setAlertMessage]=useState('')
     const {user} = useContext(userContext)
     const arr = [1,2,3,4,5]
     const [star,setStar] = useState(5)
@@ -86,6 +89,10 @@ const AddComment = ({productId,addCommentEvent}:addCommentProp)=>{
                         .catch(err=>err)
         if(result.status===1){
             addCommentEvent({username:user.username,thumbUrl:user.avatar,content:text,star:star})
+            setAlertMessage('comment have add')
+        }
+        else{
+            setAlertMessage('you have comment in this product')
         }
 
     }
@@ -103,6 +110,7 @@ const AddComment = ({productId,addCommentEvent}:addCommentProp)=>{
                 <textarea placeholder="hello" value={text} onChange={(e)=>setText(e.target.value)}></textarea>
                 <button>Submit</button>
             </form>
+            <Alert message={alertMessage}/>
         </div>
     )
 }
