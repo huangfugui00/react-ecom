@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import {productType} from '../../App'
 import Favorite from '../../components/Favorite'
 import Alert from '../../components/Alert'
-
+import cartServices from '../../services/cart'
 type productIntroProp = {
     product:productType
 }
@@ -11,10 +11,17 @@ type productIntroProp = {
 const ProductIntro = ({product}:productIntroProp) => {
     const [buyNum,setBuyNum]=useState(1) 
     const [alertMessage,setAlertMessage] = useState('')
-    const addToCart = ()=>{
+    const addToCart = async ()=>{
+        const result = await cartServices.addToCart(product._id,buyNum)
+        if(result.status===1){
+            setAlertMessage('添加成功')
+        }
+        else{
+            setAlertMessage('添加失败')
+        }
         
-        setAlertMessage('add success')
     }
+
 
 
     return (
@@ -37,7 +44,7 @@ const ProductIntro = ({product}:productIntroProp) => {
             <div className="d-flex justify-content-between" id="num-cart-favorite">
                 <div id="product-buy-num" className="d-flex">
                     <i className="bi bi-dash" onClick={() =>{setBuyNum(Math.max(buyNum-1,1))}} />
-                    <input value={buyNum}  onChange={(e)=>{setBuyNum(parseInt(e.target.value))}}/>
+                    <input value={buyNum}  onChange={(e)=>{Number.isNaN(parseInt(e.target.value))?setBuyNum(buyNum):setBuyNum(parseInt(e.target.value))}}/>
                     <i className="bi bi-plus" onClick={() =>{setBuyNum(buyNum+1)}}/>
                 </div>
                 <button  id="add-cart" onClick={addToCart}>ADD TO CART</button>

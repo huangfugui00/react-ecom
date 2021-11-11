@@ -24,7 +24,6 @@ const Order = () => {
             phone:'15011907102'
         }  as deliverType
     )
-
     const [orderDetail] = useState(
        [ 
         {

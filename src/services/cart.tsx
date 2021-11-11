@@ -1,4 +1,5 @@
 import api from './api'
+import {cartProductType} from '../pages/shopCart/ShopCart'
 
 const cartServices = {
     addToCart(productId:string,numToCart:number){
@@ -13,9 +14,16 @@ const cartServices = {
         return api().delete(`/cart/${productId}`)
     },
 
-    getCarts(){
+    getCart(){
         return api().get('/cart');
+    },
+
+    syncCart(cartProducts:cartProductType[]){
+        const data = cartProducts.map(cartProduct=>{return {id:cartProduct.product._id,numInCart:cartProduct.numInCart}})
+        return api().put('/cart',{data:data})
     }
+
+
 }
 
 

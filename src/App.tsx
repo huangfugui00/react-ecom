@@ -50,7 +50,10 @@ type userContextType = {
 }
 
 
+
+
 export const userContext = React.createContext({} as userContextType)
+export const orderContext = React.createContext({} as userContextType)
 
 
 function App() {
@@ -81,15 +84,11 @@ function App() {
         <Switch>
           <Route path="/shop"  component={Shop}/>
           <Route path="/product/:id" component={ProductDetail} exact/>
-          <RouteRequiresLogin path='/shopCart' component={ShopCart}/>
-        
-
-          
-          {/* {<Route path="/shopCart" component={ShopCart}/>} */}
-           
-          <Route path="/order">
-            <Order/>
-          </Route>
+          {/* <orderContext.Provider value={{}}> */}
+          <RouteRequiresLogin path='/cart' component={ShopCart}/>   
+          <Route path="/order" component={Order}/>   
+          {/* <RouteRequiresLogin path='/order' component={Order}/>          */}
+          {/* </orderContext.Provider> */}
           <Route path="/" component={Home}/>         
         </Switch>
         <Footer contact={contact} />

@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { RouteComponentProps,Redirect} from "react-router-dom";
+import { RouteComponentProps} from "react-router-dom";
 import ProductImage from './ProductImage'
 import ProductIntro from './ProductIntro'
 import TagButtons from './TagButtons'
