@@ -19,10 +19,8 @@ export type cartProductType = {
 }
 
 
-const ShopCart = () => {
+const ShopCart = () : JSX.Element=> {
     
-    const [cartProducts,setCartProducts]=useState([] as cartProductType[])
-
     useEffect(() => {
         const fetchCart = async()=>{
             const result = await cartServices.getCarts()        
@@ -37,10 +35,9 @@ const ShopCart = () => {
         fetchCart()
     }, [])
 
+    const [cartProducts,setCartProducts] = useState([] as cartProductType[])
 
-
-    return (
-        
+    return (        
         <div className="shop-cart">
             <div id="bread">
                 <NavBread/>

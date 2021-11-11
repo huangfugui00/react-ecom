@@ -1,6 +1,6 @@
 import './App.css';
 import { useState} from 'react'
-import RouteRequiresLogin from './components/RouteRequiresLogin'
+import RouteRequiresLogin from './components/auth'
 import Home from'./pages/home/Home'
 import Shop from'./pages/shop/Shop'
 import ShopCart from './pages/shopCart/ShopCart'
@@ -81,12 +81,11 @@ function App() {
         <Switch>
           <Route path="/shop"  component={Shop}/>
           <Route path="/product/:id" component={ProductDetail} exact/>
-          <RouteRequiresLogin path='/shopCart'>
-              {ShopCart}
-            </RouteRequiresLogin>
+          <RouteRequiresLogin path='/shopCart' component={ShopCart}/>
+        
 
           
-          {/* {auth()? <Route path="/shopCart" component={ShopCart}/>:<></> } */}
+          {/* {<Route path="/shopCart" component={ShopCart}/>} */}
            
           <Route path="/order">
             <Order/>
