@@ -8,7 +8,7 @@ import ProductDetail from './pages/productDetail/ProductDetail'
 import Order from'./pages/order/Order'
 import Header from './components/Header'
 import Footer from './components/Footer'
-
+import {cartProductType} from './pages/shopCart/ShopCart'
 
 import {
   BrowserRouter as Router,
@@ -39,6 +39,7 @@ export type productType = {
 }
 
 export type userType = {
+  islogin:boolean,
   _id:string,
   avatar:string,
   username:string,
@@ -49,24 +50,31 @@ type userContextType = {
   setUser:(user:userType)=>void,
 }
 
-
+type orderContextType={
+  order:cartProductType[],
+  setOrder:(order:cartProductType[])=>void
+}
 
 
 export const userContext = React.createContext({} as userContextType)
-export const orderContext = React.createContext({} as userContextType)
+export const orderContext = React.createContext({} as orderContextType)
 
 
 function App() {
 
   const [user,setUser]=useState(
     {
+      islogin:true,
       _id:'61361f77c1cc31c6ef7b39d5',
       avatar:'/static/avatar/61361f77c1cc31c6ef7b39d5/banner-04.jpg',
       username:'hfg',
     }
   )
-  
 
+  
+  const [order,setOrder] = useState(
+    [] as cartProductType[]
+  )
 
   const [contact] = useState(
     {
@@ -82,14 +90,16 @@ function App() {
       <userContext.Provider value={{user,setUser}}>
       <Header/>
         <Switch>
+
           <Route path="/shop"  component={Shop}/>
-          <Route path="/product/:id" component={ProductDetail} exact/>
-          {/* <orderContext.Provider value={{}}> */}
-          <RouteRequiresLogin path='/cart' component={ShopCart}/>   
-          <Route path="/order" component={Order}/>   
-          {/* <RouteRequiresLogin path='/order' component={Order}/>          */}
-          {/* </orderContext.Provider> */}
-          <Route path="/" component={Home}/>         
+          <Route path="/product/:id" component={ProductDetail} exact/> 
+          <Route path="/" exact component={Home}/>  
+
+
+          <orderContext.Provider value={{order,setOrder}}>
+            <RouteRequiresLogin path='/cart' component={ShopCart}/>   
+            <RouteRequiresLogin path='/order' component={Order}/>         
+          </orderContext.Provider>
         </Switch>
         <Footer contact={contact} />
       </userContext.Provider>

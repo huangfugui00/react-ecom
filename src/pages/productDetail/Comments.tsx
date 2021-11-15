@@ -1,10 +1,10 @@
 import React,{useState,useContext} from 'react'
+import { useHistory } from 'react-router-dom'
 import {commentType} from './ProductDetail'
 import config from '../../config/config'
 import {userContext} from '../../App'
 import commentServices  from '../../services/comment'
 import Alert from '../../components/Alert'
-
 
 import './Comments.scss'
 
@@ -76,8 +76,14 @@ const AddComment = ({productId,addCommentEvent}:addCommentProp)=>{
     const arr = [1,2,3,4,5]
     const [star,setStar] = useState(5)
     const [text,setText] = useState('')
+    const history = useHistory();
+
 
     const postComment =async (e:React.FormEvent)=>{
+      
+        if(!user.islogin){
+            history.push('/')
+        }
         e.preventDefault()
         const data={
             productId:productId,

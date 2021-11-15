@@ -1,15 +1,17 @@
 import React from 'react'
+import StripeCheckout from "react-stripe-checkout";
+import {Token} from 'react-stripe-checkout'
 import './detail.scss'
-import {orderDetailType} from './Order'
+import {cartProductType} from '../shopCart/ShopCart'
 
 type detailProp={
-    orderDetail:orderDetailType[]
+    orderDetail:cartProductType[],
+    payEvent:(token:Token)=>void
 }
 
 
-const Detail = ({orderDetail}:detailProp) => {
-    const totalPrice = orderDetail.reduce((accu,productInCart)=>accu+productInCart.price*productInCart.number,0)
-
+const Detail = ({orderDetail,payEvent}:detailProp) => {
+    const totalPrice = orderDetail.reduce((accu,productInCart)=>accu+productInCart.product.price*productInCart.numInCart,0)
     return (
         <div className="order-detail">
             <h3>Your Order</h3>
@@ -21,10 +23,10 @@ const Detail = ({orderDetail}:detailProp) => {
             <div id="detail-product-list">
                 {
                     orderDetail.map(productInCart => 
-                        <div className="d-flex justify-content-between">
-                            <span>{productInCart.intro}</span>
-                            <span>x{productInCart.number}</span>
-                            <span>{productInCart.number*productInCart.price}</span>
+                        <div className="d-flex justify-content-between" id="detail-product-list-item">
+                            <span>{productInCart.product.intro}</span>
+                            <span>x{productInCart.numInCart}</span>
+                            <span>{productInCart.numInCart*productInCart.product.price}</span>
                         </div>  
                         )
                 }
@@ -33,8 +35,14 @@ const Detail = ({orderDetail}:detailProp) => {
                 <span>Total</span>
                 <span>${totalPrice}</span>
             </div>
-            <button>Pay</button>
-         
+            <StripeCheckout
+                stripeKey="pk_test_51JuxCuKbxfW8ZS8cPQej3cSP17GkiTuc7DlJXH3m0ymZTGbFeojfTfiaaQjEfMOdjL7QZUGlNfFNxz7Y4Q1pgNCx00KND8nzpT"
+                token={payEvent}
+                amount= {totalPrice*100}
+                name="Order"
+                // billingAddress
+                // shippingAddress
+            />
         </div>
     )
 }

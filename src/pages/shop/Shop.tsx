@@ -33,7 +33,7 @@ type shopProp ={
     category:string
 }
 
-const Shop = ({match,location}: RouteComponentProps<shopProp>) : JSX.Element => {
+const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
     useEffect(() => {
         async function fectProducts(){
             const result =  await productServices.getProducts()

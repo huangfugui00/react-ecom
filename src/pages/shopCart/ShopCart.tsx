@@ -1,9 +1,13 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
+import { History } from 'history';
 import { useBeforeunload } from 'react-beforeunload'
 import CartProducts from './CartProducts'
 import NavBread from './NavBread'
 import CartTotal from './CartTotal'
 import cartServices from '../../services/cart'
+import {orderContext} from '../../App'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import  './shopCart.scss'
 
 export type cartProductType = {
@@ -18,12 +22,16 @@ export type cartProductType = {
     }
 }
 
+type shopCartProp = {
+    history:History
+}
 
-const ShopCart = () : JSX.Element=> {
-
+const ShopCart = ({history}:shopCartProp) : JSX.Element=> {
+    
     useBeforeunload((event) => {
         cartServices.syncCart(cartProducts)
     });
+
     useEffect(() => {
         const fetchCart = async()=>{
             const result = await cartServices.getCart()        
@@ -38,9 +46,8 @@ const ShopCart = () : JSX.Element=> {
         fetchCart()
     }, [])
 
+    const {setOrder} = useContext(orderContext)
     const [cartProducts,setCartProducts] = useState([] as cartProductType[])
-    // const productsToBuy = cartProducts.filter(cartProduct=>cartProduct.check)
-    // const [productsToBuy,setProductsToBuy] = useState([] as cartProductType[])
 
     const removeCart = async(cartId:string)=>{
         const result = await cartServices.deleteFromCart(cartId)
@@ -84,7 +91,16 @@ const ShopCart = () : JSX.Element=> {
             selCartProduct.check = !selCartProduct.check 
         }
         setCartProducts(copyCartProducts)
+    }
 
+    const generateOrder = ()=>{
+        const order= cartProducts.filter(cartProduct=>cartProduct.check)
+        if(!order.length){
+            toast('您必须勾选您想购买的商品')
+            return 
+        }
+        setOrder(order)
+        history.push('/order')
     }
     return (        
         <div className="shop-cart">
@@ -94,7 +110,8 @@ const ShopCart = () : JSX.Element=> {
             <div id="shop-cart-product">
                 <CartProducts cartProducts={cartProducts} removeCart={removeCart} increase={increase} decrease={decrease} setNumInCart={setNumInCart} toggleCheck={toggleCheck}/>
             </div>
-            <CartTotal cartProducts={cartProducts}/>
+            <CartTotal cartProducts={cartProducts} generateOrder={generateOrder}/>
+            <ToastContainer/>
         </div>
     )
 }

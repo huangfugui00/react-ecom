@@ -21,7 +21,9 @@ function api(){
       if (error.response.status === 401) {
         localStorage.removeItem('token')
       }
-      error.response.data.data = error.response.statusText
+      if(error.response.data===undefined){
+        error.response.data.data = error.response.statusText
+      }
       return error.response.data
     }
   )

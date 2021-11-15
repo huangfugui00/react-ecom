@@ -1,4 +1,6 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
+import {userContext} from '../App'
+import { useHistory } from 'react-router-dom'
 import './favorite.scss'
 import favoriteServices from '../services/favorite'
 type favoriteProp = {
@@ -6,8 +8,9 @@ type favoriteProp = {
 }
 
 const Favorite = ({productId}:favoriteProp) => {
+    const history=useHistory()
+    const {user} = useContext(userContext)
     const [favoriteId,setFavorite] = useState('')
-
     useEffect(() => {
         const checkFavrote = async()=>{
             const result = await favoriteServices.checkFavorite(productId)
@@ -18,13 +21,16 @@ const Favorite = ({productId}:favoriteProp) => {
                 }
             }
         }
-        if(productId!==undefined){
+        if(productId!==undefined && user.islogin){
             checkFavrote()
         }
     }, [productId])
     
 
     const unFavoriteEvent = async()=>{
+        if(!user.islogin){
+            history.push('/')
+        }
         const result = await  favoriteServices.unFavorite(favoriteId)    
         if(result.status===1){
             setFavorite('')
@@ -32,6 +38,9 @@ const Favorite = ({productId}:favoriteProp) => {
     }
 
     const favoriteEvent = async()=>{
+       if(!user.islogin){
+            history.push('/')
+        }
         const result = await  favoriteServices.createFavorite(productId)    
         if(result.status===1){
             setFavorite( result.data._id)

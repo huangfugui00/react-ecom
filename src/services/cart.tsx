@@ -20,7 +20,7 @@ const cartServices = {
 
     syncCart(cartProducts:cartProductType[]){
         const data = cartProducts.map(cartProduct=>{return {id:cartProduct.product._id,numInCart:cartProduct.numInCart}})
-        return api().put('/cart',{data:data})
+        return api().put('/cart',{data})
     }
 
 
