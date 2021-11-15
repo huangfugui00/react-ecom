@@ -4,19 +4,22 @@ type productType = {
     product:string,
     num:Number,
 }
-type createOrderProp = {
-    products:productType[]
-    deliver:string,
-}
+
 
 const orderServices = {
-    createOrder({products,deliver}:createOrderProp){
+    createOrder(products:productType[],deliver:string){
         const data = {
             products,
-            deliver
+            deliver   
         }
         return api().post('/order',data)
     },
+    updateOrder(id:string,status:string){
+        const data={
+            status
+        }
+        return api().put(`/order/${id}`,data)
+    }
 }
 
 export default orderServices

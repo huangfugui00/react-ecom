@@ -10,6 +10,8 @@ import './order.scss'
 import {orderContext} from '../../App'
 import Detail from './Detail'
 import Deliver from './Deliver'
+import orderServices from '../../services/order';
+import Product from '../../components/Product';
 
 export type deliverType = {
     _id:string,
@@ -50,7 +52,6 @@ const Order = () => {
         else{
             createDeliver()
         }
-
     }
 
     const updateDeliver = async()=>{
@@ -67,6 +68,7 @@ const Order = () => {
         const {phone,address,person}={...deliver}
         const result = await deliverServices.createDeliver(address,person,phone)
         if (result.status === 1) {
+            setDeliver({...deliver,_id:result.data._id})
             toast("创建deliver成功", { type: "success" });
         } else {
             toast("创建deliver失败", { type: "error" });
@@ -74,14 +76,20 @@ const Order = () => {
     }
 
 
-
     const payEvent= async (token:Token)=>{
         //生成order
+        const products = order.map(product=>{return {product:product.product._id,num:product.numInCart}})
+        let result = await orderServices.createOrder(products,deliver._id)
+        if(result.status===0){
+            toast("订单创建失败", { type: "error" });
+        }
+        const newOrder = result.data
 
-        const result = await payServices.handleToken(token,totalPrice)
+        result = await payServices.handleToken(token,totalPrice)
         if (result.status === 1) {
             //更新order状态为pay
             toast("Success! Check email for details", { type: "success" });
+            await orderServices.updateOrder(newOrder._id,'pay')
         } else {
             toast("Something went wrong", { type: "error" });
         }
