@@ -1,11 +1,8 @@
 @import '../../assests/css/index.scss';//导入其他css文件
 
-.shop-content{
+.order-list{
     @extend .my-container ;
+    margin-top:5rem;
+    margin-bottom: 5rem;
 
-}
-
-.shop-category-tag {
-    display: block;
-    height:100px;
 }

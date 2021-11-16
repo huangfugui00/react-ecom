@@ -19,6 +19,9 @@ const orderServices = {
             status
         }
         return api().put(`/order/${id}`,data)
+    },
+    getOrder(){
+        return api().get('/order')
     }
 }
 

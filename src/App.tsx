@@ -6,6 +6,7 @@ import Shop from'./pages/shop/Shop'
 import ShopCart from './pages/shopCart/ShopCart'
 import ProductDetail from './pages/productDetail/ProductDetail'
 import Order from'./pages/order/Order'
+import OrderList from './pages/orderList/OrderList'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import {cartProductType} from './pages/shopCart/ShopCart'
@@ -99,6 +100,7 @@ function App() {
           <orderContext.Provider value={{order,setOrder}}>
             <RouteRequiresLogin path='/cart' component={ShopCart}/>   
             <RouteRequiresLogin path='/order' component={Order}/>         
+            <RouteRequiresLogin path='/orderList' component={OrderList}/>         
           </orderContext.Provider>
         </Switch>
         <Footer contact={contact} />

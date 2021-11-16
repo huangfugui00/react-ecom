@@ -1,17 +1,18 @@
 import React,{useState,useContext,useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
+
 import {Token} from 'react-stripe-checkout'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import payServices from '../../services/pay'
 import deliverServices from '../../services/deliver'
-import {useHistory} from 'react-router-dom'
-// import "react-toastify/dist/ReactToastify.css";
+import orderServices from '../../services/order';
+
 import './order.scss'
 import {orderContext} from '../../App'
 import Detail from './Detail'
 import Deliver from './Deliver'
-import orderServices from '../../services/order';
-import Product from '../../components/Product';
 
 export type deliverType = {
     _id:string,

@@ -6,6 +6,7 @@ import NavBread from './NavBread'
 import CartTotal from './CartTotal'
 import cartServices from '../../services/cart'
 import {orderContext} from '../../App'
+import {productType} from '../../App'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import  './shopCart.scss'
@@ -14,12 +15,7 @@ export type cartProductType = {
     _id:string,
     numInCart:number,
     check:boolean,
-    product:{
-        _id:string,
-        price:number,
-        intro:string,
-        thumb:string,
-    }
+    product:productType
 }
 
 type shopCartProp = {
