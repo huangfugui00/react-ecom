@@ -75,14 +75,15 @@ input, textarea, label {
 }
 
 
+
+
 .my-transition-img{
     display: block;
     overflow: hidden;
     img{
         transition: transform 0.9s ease;
         width:  100%;
-        height: 300px;
-        object-fit: cover;
+       
     }
     &:hover{
         img{

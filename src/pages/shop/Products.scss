@@ -2,5 +2,11 @@
     margin-top: 2rem;;
     #shop-products-product{
         margin-bottom: 1.5rem;
+      
+        img{//固定高度的图片
+            height: 300px;
+            object-fit: cover;
+        }
     }
+    
 }

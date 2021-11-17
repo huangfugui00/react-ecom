@@ -4,6 +4,7 @@
     #component-product-image{
         position: relative;
         @extend .my-transition-img;
+       
         a{
             position: absolute;
             padding:0.5rem 2rem ;
