@@ -95,8 +95,6 @@ function App() {
           <Route path="/shop"  component={Shop}/>
           <Route path="/product/:id" component={ProductDetail} exact/> 
           <Route path="/" exact component={Home}/>  
-
-
           <orderContext.Provider value={{order,setOrder}}>
             <RouteRequiresLogin path='/cart' component={ShopCart}/>   
             <RouteRequiresLogin path='/order' component={Order}/>         

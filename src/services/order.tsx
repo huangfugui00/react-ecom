@@ -2,7 +2,7 @@ import api from './api'
 
 type productType = {
     product:string,
-    num:Number,
+    numInCart:Number,
 }
 
 
@@ -22,6 +22,9 @@ const orderServices = {
     },
     getOrder(){
         return api().get('/order')
+    },
+    deleteOrder(id:string){
+        return api().delete(`/order/${id}`)
     }
 }
 

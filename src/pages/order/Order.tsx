@@ -79,7 +79,7 @@ const Order = () => {
 
     const payEvent= async (token:Token)=>{
         //生成order
-        const products = order.map(product=>{return {product:product.product._id,num:product.numInCart}})
+        const products = order.map(product=>{return {product:product.product._id,numInCart:product.numInCart}})
         let result = await orderServices.createOrder(products,deliver._id)
         if(result.status===0){
             toast("订单创建失败", { type: "error" });
@@ -89,8 +89,10 @@ const Order = () => {
         result = await payServices.handleToken(token,totalPrice)
         if (result.status === 1) {
             //更新order状态为pay
-            toast("Success! Check email for details", { type: "success" });
             await orderServices.updateOrder(newOrder._id,'pay')
+            history.push('/orderList')
+            toast("Success! Check email for details", { type: "success" });
+            
         } else {
             toast("Something went wrong", { type: "error" });
         }

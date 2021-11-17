@@ -1,5 +1,5 @@
 import React from 'react'
-import StripeCheckout from "react-stripe-checkout";
+import PayCard from '../../components/PayCard'
 import {Token} from 'react-stripe-checkout'
 import './detail.scss'
 import {cartProductType} from '../shopCart/ShopCart'
@@ -35,14 +35,7 @@ const Detail = ({orderDetail,payEvent}:detailProp) => {
                 <span>Total</span>
                 <span>${totalPrice}</span>
             </div>
-            <StripeCheckout
-                stripeKey="pk_test_51JuxCuKbxfW8ZS8cPQej3cSP17GkiTuc7DlJXH3m0ymZTGbFeojfTfiaaQjEfMOdjL7QZUGlNfFNxz7Y4Q1pgNCx00KND8nzpT"
-                token={payEvent}
-                amount= {totalPrice*100}
-                name="Order"
-                // billingAddress
-                // shippingAddress
-            />
+            <PayCard price={totalPrice*100} payEvent={payEvent}/>
         </div>
     )
 }
