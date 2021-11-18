@@ -35,13 +35,13 @@ const OrderItem = ({order,deleteOrder,updateOrderStatus}:orderItemProp) => {
     }
 
     return (
-        <div className="order-item row">
+        <div className="order-item row  align-items-center">
             <div id="order-item-thumbs" className="col-6 ">
                 {order.products.map(product=>
                     <img src={`${config.api}/${product.product.thumb}`} alt={product.product.intro}/>)}
             </div>
-            <span className="col-3 m-auto">x{productNum}</span>
-            <span className="col-3 d-flex justify-content-end m-auto ">${price}</span>
+            <span className="col-3 ">x{productNum}</span>
+            <span className="col-3 d-flex justify-content-end ">${price}</span>
             <div id="order-item-button" className="d-flex justify-content-end gap-2">
                 {order.status === 'pay'?<></>: <PayCard price={price} payEvent={payEvent} ></PayCard>}
                 <button id="delete"  onClick={()=>deleteOrder(order._id)}>delete</button>

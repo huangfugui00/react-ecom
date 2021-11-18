@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import { Token } from 'react-stripe-checkout'
 import OrderItem from './OrderItem'
 import orderServices from '../../services/order'
 import {cartProductType} from '../shopCart/ShopCart'
