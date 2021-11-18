@@ -2,6 +2,7 @@ import './App.css';
 import { useState} from 'react'
 import RouteRequiresLogin from './components/auth'
 import Login from './pages/login/Login'
+import Register from './pages/register/Register'
 import Home from'./pages/home/Home'
 import Shop from'./pages/shop/Shop'
 import ShopCart from './pages/shopCart/ShopCart'
@@ -92,6 +93,7 @@ function App() {
       <userContext.Provider value={{user,setUser}}>
       <Header/>
         <Switch>
+          <Route path="/register"  component={Register}/>
           <Route path="/login"  component={Login}/>
           <Route path="/shop"  component={Shop}/>
           <Route path="/product/:id" component={ProductDetail} exact/> 

@@ -1,22 +1,33 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
+import {useHistory} from 'react-router-dom'
 import Logo from '../../components/Logo'
-import './login.scss'
+import './register.scss'
 
 type formProp = {
+    username:string,
     email:string,
     password:string,
 }
 
-const Login = () => {
+const Register = () => {
+    const history = useHistory()
     const { handleSubmit, register, formState: { errors },reset } = useForm();
     const onSubmit = (data:formProp)=>{
         reset()
+        history.push('/login')
     }
     
     return (
-        <div className="login-page d-flex align-items-center">
+        <div className="register-page d-flex align-items-center">
             <form onSubmit={handleSubmit(onSubmit)}>
+                <div id="username">
+                <span>username</span>
+                    <input className="form-control" type="text" placeholder="username is not for login"  
+                    {...register("username", { required: true, minLength: 3 })}
+                    />
+                    {errors.username && <span id="error">username at least 3 char</span>}
+               </div>
                 <div id="email">
                 <span>email</span>
                 <input className="form-control" type="email" placeholder="Enter your email" 
@@ -38,8 +49,8 @@ const Login = () => {
                </div>
               
                 <div className="d-flex align-items-center">
-                <button>login</button>
-                <a href="/register">Not have a account,go to register!</a>
+                <button>register</button>
+                <a href="/login">Already have a accout?</a>
                 </div>
             </form>
             <Logo/>                        
@@ -47,4 +58,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register
