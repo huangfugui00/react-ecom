@@ -66,12 +66,13 @@ export const orderContext = React.createContext({} as orderContextType)
 function App() {
 
   const [user,setUser]=useState(
-    {
-      islogin:true,
-      _id:'61361f77c1cc31c6ef7b39d5',
-      avatar:'/static/avatar/61361f77c1cc31c6ef7b39d5/banner-04.jpg',
-      username:'hfg',
-    }
+    {} as userType
+    // {
+    //   islogin:true,
+    //   _id:'61361f77c1cc31c6ef7b39d5',
+    //   avatar:'/static/avatar/61361f77c1cc31c6ef7b39d5/banner-04.jpg',
+    //   username:'hfg',
+    // }
   )
 
   

@@ -1,6 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {useForm} from 'react-hook-form'
+import {useHistory} from 'react-router-dom'
 import Logo from '../../components/Logo'
+import {ToastAlert,toastAlert} from '../../components/ToastAlert'
+import {userContext} from '../../App'
+import userServices from '../../services/user'
 import './login.scss'
 
 type formProp = {
@@ -9,9 +13,27 @@ type formProp = {
 }
 
 const Login = () => {
+    const history = useHistory()
     const { handleSubmit, register, formState: { errors },reset } = useForm();
-    const onSubmit = (data:formProp)=>{
-        reset()
+    const {setUser} = useContext(userContext)
+
+    const onSubmit = async (data:formProp)=>{
+        let result = await userServices.login(data.email,data.password)
+        if(result.status===1){
+             //set local token
+            const token = result.data.token
+            localStorage.setItem('token', token)
+            //getUser
+            result = await userServices.getMe()
+            if(result.status===1){
+            //setUser
+                const user= result.data.user   
+                setUser({...user,islogin:true})
+            }
+            reset()
+            history.push('/')
+        }
+        toastAlert(result.statusText)
     }
     
     return (
@@ -32,9 +54,9 @@ const Login = () => {
                <div id="password">
                <span>password</span>
                 <input className="form-control" type="password" placeholder="Enter your password"  
-                 {...register("password", { required: true, minLength: 6 })}
+                 {...register("password", { required: true, minLength: 3 })}
                 />
-                {errors.password && <span id="error">password at least 6 char</span>}
+                {errors.password && <span id="error">password at least 3 char</span>}
                </div>
               
                 <div className="d-flex align-items-center">
@@ -42,7 +64,8 @@ const Login = () => {
                 <a href="/register">Not have a account,go to register!</a>
                 </div>
             </form>
-            <Logo/>                        
+            <Logo/>              
+            <ToastAlert/>          
         </div>
     )
 }

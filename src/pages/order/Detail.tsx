@@ -35,7 +35,7 @@ const Detail = ({orderDetail,payEvent}:detailProp) => {
                 <span>Total</span>
                 <span>${totalPrice}</span>
             </div>
-            <PayCard price={totalPrice*100} payEvent={payEvent}/>
+            <PayCard price={totalPrice} payEvent={payEvent}/>
         </div>
     )
 }
