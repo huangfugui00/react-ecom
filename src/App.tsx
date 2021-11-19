@@ -1,5 +1,6 @@
 import './App.css';
 import { useState} from 'react'
+import usePersistedState from './util/persistence'
 import RouteRequiresLogin from './components/auth'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
@@ -9,7 +10,7 @@ import ShopCart from './pages/shopCart/ShopCart'
 import ProductDetail from './pages/productDetail/ProductDetail'
 import Order from'./pages/order/Order'
 import OrderList from './pages/orderList/OrderList'
-import Header from './components/Header'
+import Header from './components/header/Header'
 import Footer from './components/Footer'
 import {cartProductType} from './pages/shopCart/ShopCart'
 
@@ -65,16 +66,7 @@ export const orderContext = React.createContext({} as orderContextType)
 
 function App() {
 
-  const [user,setUser]=useState(
-    {} as userType
-    // {
-    //   islogin:true,
-    //   _id:'61361f77c1cc31c6ef7b39d5',
-    //   avatar:'/static/avatar/61361f77c1cc31c6ef7b39d5/banner-04.jpg',
-    //   username:'hfg',
-    // }
-  )
-
+  const [user,setUser]= usePersistedState('user',{} as userType)
   
   const [order,setOrder] = useState(
     [] as cartProductType[]

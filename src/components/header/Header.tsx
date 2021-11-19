@@ -1,9 +1,13 @@
-import React from 'react';
-import defaultAvatar from '../assests/images/icons/logo-01.png'
+import React,{useContext} from 'react';
+import { Link } from 'react-router-dom'
+import {userContext} from '../../App'
+import defaultAvatar from '../../assests/images/icons/logo-01.png'
+import IconText from '../../components/IconText'
 import './Header.scss';
 
 
 const Header = () : JSX.Element => {
+    const {user}= useContext(userContext)
     return (
         <div>
             <header className="container-header">
@@ -52,8 +56,17 @@ const Header = () : JSX.Element => {
                                 <i className="bi bi-cart-fill "></i>
                             </div>
                             
-                            <div className="col ">
-                                <i className="bi bi-heart "></i>
+                        
+                            
+                            <div className="col">
+                                {
+                                 user.islogin?  <></>:
+                                <Link  to={"/login"} id="link-login">
+                                    <IconText icon={'bi-person'} text={'Login'}/>
+                                </Link>
+
+                                }
+                                
                             </div>
  
                         </div>

@@ -9,11 +9,7 @@ export type bannerType = {
     img: string;
   };
 
-// export type displayContentType={
-//     img:string,
-//     intro: string,
-//     price:string,
-// }
+
 
 export type displayType = {
     displayName: string;

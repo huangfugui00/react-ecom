@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useEffect,useContext} from 'react'
 import {useForm} from 'react-hook-form'
 import {useHistory} from 'react-router-dom'
 import Logo from '../../components/Logo'
@@ -13,9 +13,15 @@ type formProp = {
 }
 
 const Login = () => {
+    useEffect(() => {
+        if(user.islogin){
+            history.push('/')
+        }
+    }, [])
+
     const history = useHistory()
     const { handleSubmit, register, formState: { errors },reset } = useForm();
-    const {setUser} = useContext(userContext)
+    const {user,setUser} = useContext(userContext)
 
     const onSubmit = async (data:formProp)=>{
         let result = await userServices.login(data.email,data.password)
@@ -35,7 +41,7 @@ const Login = () => {
         }
         toastAlert(result.statusText)
     }
-    
+
     return (
         <div className="login-page d-flex align-items-center">
             <form onSubmit={handleSubmit(onSubmit)}>
