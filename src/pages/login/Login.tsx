@@ -28,7 +28,7 @@ const Login = () => {
         if(result.status===1){
              //set local token
             const token = result.data.token
-            localStorage.setItem('token', token)
+            sessionStorage.setItem('token', token)
             //getUser
             result = await userServices.getMe()
             if(result.status===1){

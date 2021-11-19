@@ -49,6 +49,7 @@ export type userType = {
   username:string,
 }
 
+
 type userContextType = {
   user:userType,
   setUser:(user:userType)=>void,
@@ -66,8 +67,9 @@ export const orderContext = React.createContext({} as orderContextType)
 
 function App() {
 
-  const [user,setUser]= usePersistedState('user',{} as userType)
-  
+  // const [user,setUser,unpersist]= usePersistentState({} as userType)
+  const [user,setUser]= usePersistedState('user',{} as  userType) 
+
   const [order,setOrder] = useState(
     [] as cartProductType[]
   )

@@ -7,7 +7,7 @@ function api(){
   })
 
   //每个axios请求带上token(存在的话)
-  const token = localStorage.getItem('token')
+  const token =sessionStorage.getItem('token') || localStorage.getItem('token') 
   if (token) {
     axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`
   }

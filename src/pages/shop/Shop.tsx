@@ -1,4 +1,6 @@
 import React, {useState,useEffect} from 'react'
+import  usePersistedState from '../../util/persistence'
+import {usePersistentState} from 'react-persistent-state'
 import { RouteComponentProps} from "react-router-dom";
 import Categories from './Categories'
 import TagButton from './TagButton'
@@ -59,7 +61,9 @@ const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
                 setProducts(productsFromApi)
             }
         }
-        fectProducts()
+        if(products.length==0){
+            fectProducts()
+        }
     }, [])
 
     useEffect(()=>{
@@ -71,7 +75,10 @@ const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
         }
     },[])
 
-    const [products,setProducts] = useState([] as productType[])
+    // const [products,setProducts] = usePersistentState([] as productType[])
+    const [products,setProducts] = usePersistedState('products',[] as productType[])
+    // const [products,setProducts] = useState([] as productType[])
+
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
     const [categorySel,setCategorySel] = useState('All')
