@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {userContext} from '../../App'
 import defaultAvatar from '../../assests/images/icons/logo-01.png'
 import IconText from '../../components/IconText'
+import UserMenu from './UserMenu'
 import './Header.scss';
 
 
@@ -60,11 +61,10 @@ const Header = () : JSX.Element => {
                             
                             <div className="col">
                                 {
-                                 user.islogin?  <></>:
-                                <Link  to={"/login"} id="link-login">
+                                 user.islogin?  <UserMenu userName={user.username} avatar={user.avatar}/>:
+                                <Link  to={"/login"} className="my-link">
                                     <IconText icon={'bi-person'} text={'Login'}/>
                                 </Link>
-
                                 }
                                 
                             </div>
