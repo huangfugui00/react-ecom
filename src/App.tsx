@@ -14,6 +14,7 @@ import Header from './components/header/Header'
 import Footer from './components/Footer'
 import {cartProductType} from './pages/shopCart/ShopCart'
 
+
 import {
   BrowserRouter as Router,
   Switch,
