@@ -37,7 +37,20 @@ type shopProp ={
 
 const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
     useEffect(() => {
-        //shop page
+       
+        const fectFavorites = async(products:productType[])=>{
+            //favorite apge
+            const result = await favoriteServices.getFavorites()
+            if(result.status===1){
+                const data = result.data
+                let productId:string[]=[]
+                for(let i = 0 ;i<data.length;i++){
+                    productId.push(data[i].productId)
+                }
+                const favoriteProducts = products.filter(product=>productId.includes(product._id))
+                setProducts(favoriteProducts)
+            }
+        }
         async function fectProducts(){
             const result =  await productServices.getProducts()
             if(result.status===1){
@@ -59,32 +72,17 @@ const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
                        productsFromApi[i]['rate'] = averageRate
                     }
                 }
-                setProducts(productsFromApi)
+                if(location.pathname==='/favorite'){
+                    fectFavorites(productsFromApi)
+                }else{
+                    setProducts(productsFromApi)
+                }
             }
         }
-        if(location.pathname.startsWith('/shop')&&products.length==0){
-            fectProducts()
-        }
+
+        fectProducts()
     }, [])
 
-    useEffect(() => {
-        //favorite page
-        const fectFavorites = async()=>{
-            const result = await favoriteServices.getFavorites()
-            if(result.status===1){
-                const data = result.data
-                let productId:string[]=[]
-                for(let i = 0 ;i<data.length;i++){
-                    productId.push(data[i].productId)
-                }
-                const favoriteProducts = products.filter(product=>productId.includes(product._id))
-                setProducts(favoriteProducts)
-            }
-        }
-        if(location.pathname.startsWith('/favorite')){
-            fectFavorites()
-        }
-    }, [])    
 
     useEffect(()=>{
         if(location){
@@ -95,7 +93,8 @@ const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
         }
     },[])
 
-    const [products,setProducts] = usePersistedState('products',[] as productType[])
+    // const [products,setProducts] = usePersistedState('products',[] as productType[])
+    const [products,setProducts] = useState([] as productType[])
 
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
