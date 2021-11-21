@@ -13,7 +13,7 @@ const BestSeller = ({bestSellers}:bestSellersProp):JSX.Element => {
             <h2>Best Seller</h2>
             <div className="row" id="best-seller-images">
                    {bestSellers.slice(0,4).map((bestSeller,index)=>
-                    <div className="col-xl-3 col-md-6">
+                    <div className="col-xl-3 col-sm-6">
                         <Product product={bestSeller}/>
                     </div>
                    )}

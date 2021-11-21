@@ -3,7 +3,7 @@ import Modal from '@mui/material/Modal';
 import {productType} from '../App'
 import config from '../config/config'
 import QuickView from '../components/quickView/QuickView'
-import Button from '@mui/material/Button';
+import {Link} from 'react-router-dom'
 import './Product.scss'
 
 

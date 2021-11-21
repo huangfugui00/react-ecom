@@ -1,0 +1,21 @@
+.account-menu{
+    #avatar{
+        vertical-align: middle;
+        width: 2.5rem;
+        height:2.5rem;
+        border-radius: 50%;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .icon-text{
+        padding-left: 1rem;
+        margin: 0.5rem 0;
+        &:hover{
+            cursor: pointer;
+            background-color:rgb(240, 240, 240);
+            color:black;
+        }
+    }
+    
+}

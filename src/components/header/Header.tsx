@@ -4,6 +4,7 @@ import {userContext} from '../../App'
 import defaultAvatar from '../../assests/images/icons/logo-01.png'
 import IconText from '../../components/IconText'
 import UserMenu from './UserMenu'
+import AccountMenu from './AccountMenu'
 import './Header.scss';
 
 
@@ -55,8 +56,8 @@ const Header = () : JSX.Element => {
                           
                             <div className="col">
                                 {
-                                 user.islogin?  <UserMenu userName={user.username} avatar={user.avatar}/>:
-                                //  user.islogin?  <AccountMenu/>:
+                                 user.islogin?  <AccountMenu userName={user.username} avatar={user.avatar}/>:
+                                //  user.islogin?  <AccountMenu userName={user.username} avatar={user.avatar}/>:
                                 <Link  to={"/login"} className="my-link">
                                     <IconText icon={'bi-person'} text={'Login'}/>
                                 </Link>

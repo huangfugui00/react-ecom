@@ -1,45 +1,31 @@
-import React,{useRef, useState} from 'react'
-import { useOnClickOutside } from 'usehooks-ts'
-import './userMenu.scss'
+import React,{ useState} from 'react'
+import './accountMenu.scss'
 import {Link} from 'react-router-dom'
 import config from '../../config/config'
 import IconText from '../../components/IconText'
 import MyMenu from './MyMenu'
-import Avatar from '@mui/material/Avatar';
 
-type userMenuProp = {
+type AccountMenuProp = {
     userName:string,
     avatar:string,
 }
 
 
-const UserMenu = ({userName,avatar}:userMenuProp) => {
+const AccountMenu = ({userName,avatar}:AccountMenuProp) => {
     const [isClick,setIsClick]=useState(false)
-    const clickStyle: React.CSSProperties = {display:'block'}
-    const nullStyle: React.CSSProperties = {display:'none'}
-    
-    const ref= useRef(null)
-    const setClickToFalse=()=>{
-        if(isClick){
-            setIsClick(false)
-        }
-    }
-    useOnClickOutside(ref,setClickToFalse)
-      
+    const closeEvent = ()=>{setIsClick(false)}
     return (
-        <div className="dropdown" ref={ref}>
+        <div className="account-menu" >
             <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar" onClick={()=>setIsClick(!isClick)} />
-            <div id="dropwdown-content" style={isClick?clickStyle:nullStyle}>
-           
+            <MyMenu open={isClick} closeEvent={closeEvent} >
                 <Link to='/' className="my-link">
                     <div className="icon-text d-flex gap-2 align-items-center"  >
                         <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar"/>
-                        {/* <Avatar alt='Avatar'src={`${config.api}/${avatar}`}  id="avatar"/> */}
                         <span>{userName}</span>
                     </div>
                 </Link>
                 <hr/>
-                <Link to="/favorite" className="my-link">
+                <Link to="/favorite" className="my-link" >
                 <IconText icon="bi-heart" text='Favorite'/>
                 </Link>
                 <Link to="/cart" className="my-link">
@@ -48,10 +34,9 @@ const UserMenu = ({userName,avatar}:userMenuProp) => {
                 <Link to="/orderList" className="my-link">
                 <IconText icon="bi-shop" text='Order'/>
                 </Link>
-              
-            </div>
+            </MyMenu>              
         </div>
     )
 }
 
-export default UserMenu
+export default AccountMenu

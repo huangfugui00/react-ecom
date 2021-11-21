@@ -5,7 +5,6 @@ import config from '../../config/config'
 import {userContext} from '../../App'
 import commentServices  from '../../services/comment'
 import Alert from '../../components/Alert'
-
 import './Comments.scss'
 
 
@@ -133,13 +132,13 @@ const Comments = ({tagButtonSel,productId, comments,addCommentEvent}:commentsPro
     const clickStyle: React.CSSProperties = {}
     const nullStyle: React.CSSProperties = {display:'none'}
     return (
-        <div style={tagButtonSel==='comments'?clickStyle:nullStyle} className="row gap-2 comments" >      
-            <div className="col" style={comments.length?clickStyle:nullStyle}>
+        <div style={tagButtonSel==='comments'?clickStyle:nullStyle} className="row justify-content-around comments" >      
+            <div className="col-xl-6" style={comments.length?clickStyle:nullStyle}>
                 <StartOverall comments={comments}/>
                 <hr/>
                 <CommentList comments={comments}/>  
             </div>
-            <div  className="col">
+            <div  className="col-xl-6">
                 <AddComment productId={productId} addCommentEvent={addCommentEvent}/>
             </div>
         </div>
