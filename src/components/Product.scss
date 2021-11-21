@@ -4,7 +4,9 @@
     #component-product-image{
         position: relative;
         @extend .my-transition-img;
-       
+        img{
+            height: 300px;
+        }
         a{
             position: absolute;
             padding:0.5rem 2rem ;
@@ -17,6 +19,7 @@
             bottom: -100px;
             &:hover{
                 background-color: rgba(85, 8, 8, 0.322);
+                cursor: pointer;
             }
         }
         &:hover{

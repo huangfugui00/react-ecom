@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from 'react'
-import  usePersistedState from '../../util/persistence'
 import { RouteComponentProps} from "react-router-dom";
 import Categories from './Categories'
 import TagButton from './TagButton'

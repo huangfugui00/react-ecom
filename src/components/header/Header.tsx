@@ -56,6 +56,7 @@ const Header = () : JSX.Element => {
                             <div className="col">
                                 {
                                  user.islogin?  <UserMenu userName={user.username} avatar={user.avatar}/>:
+                                //  user.islogin?  <AccountMenu/>:
                                 <Link  to={"/login"} className="my-link">
                                     <IconText icon={'bi-person'} text={'Login'}/>
                                 </Link>

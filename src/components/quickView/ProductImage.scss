@@ -1,0 +1,25 @@
+.product-img-lists{
+   img{
+       width:100px;
+       margin-bottom: 2rem;
+       &:hover{
+           cursor: pointer;
+       }
+   }
+}
+
+.product-img-display{
+    margin:0 6rem;
+    height:600px;
+    display: block;
+    overflow: hidden;
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+
+.img-click{
+    border:2px solid grey;
+}

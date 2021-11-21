@@ -4,6 +4,7 @@ import './userMenu.scss'
 import {Link} from 'react-router-dom'
 import config from '../../config/config'
 import IconText from '../../components/IconText'
+import Avatar from '@mui/material/Avatar';
 
 type userMenuProp = {
     userName:string,
@@ -26,6 +27,8 @@ const UserMenu = ({userName,avatar}:userMenuProp) => {
       
     return (
         <div className="dropdown" ref={ref}>
+            {/* <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar" onClick={()=>setIsClick(!isClick)} /> */}
+            {/* <Avatar alt='Avatar'src={`${config.api}/${avatar}`} onClick={()=>setIsClick(!isClick)}  id="avatar"/> */}
             <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar" onClick={()=>setIsClick(!isClick)} />
             <div id="dropwdown-content" style={isClick?clickStyle:nullStyle}>
                 <Link to='/' className="my-link">
