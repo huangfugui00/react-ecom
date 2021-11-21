@@ -2,6 +2,9 @@
 import api from './api'
 
 const favoriteServices = {
+    getFavorites(){
+        return api().get('/favorite')
+    },
     checkFavorite(productId:string){
         const data ={
             productId

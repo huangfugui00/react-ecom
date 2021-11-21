@@ -52,13 +52,7 @@ const Header = () : JSX.Element => {
                             <div className="col  ">
                                 <i className="bi bi-search"></i>
                             </div>
-                         
-                            <div className="col" data-notify="2">
-                                <i className="bi bi-cart-fill "></i>
-                            </div>
-                            
-                        
-                            
+                          
                             <div className="col">
                                 {
                                  user.islogin?  <UserMenu userName={user.username} avatar={user.avatar}/>:

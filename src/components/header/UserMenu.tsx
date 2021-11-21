@@ -25,8 +25,8 @@ const UserMenu = ({userName,avatar}:userMenuProp) => {
     useOnClickOutside(ref,setClickToFalse)
       
     return (
-        <div className="dropdown">
-            <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar" onClick={()=>setIsClick(!isClick)} ref={ref}/>
+        <div className="dropdown" ref={ref}>
+            <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar" onClick={()=>setIsClick(!isClick)} />
             <div id="dropwdown-content" style={isClick?clickStyle:nullStyle}>
                 <Link to='/' className="my-link">
                     <div className="icon-text d-flex gap-2 align-items-center"  >
@@ -35,13 +35,13 @@ const UserMenu = ({userName,avatar}:userMenuProp) => {
                     </div>
                 </Link>
                 <hr/>
-                <Link to="/" className="my-link">
+                <Link to="/favorite" className="my-link">
                 <IconText icon="bi-heart" text='Favorite'/>
                 </Link>
-                <Link to="/" className="my-link">
+                <Link to="/cart" className="my-link">
                 <IconText icon="bi-cart" text='Cart'/>
                 </Link>
-                <Link to="/" className="my-link">
+                <Link to="/orderList" className="my-link">
                 <IconText icon="bi-shop" text='Order'/>
                 </Link>
             </div>

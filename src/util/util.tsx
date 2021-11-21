@@ -7,7 +7,7 @@ export const getQuery = (urlParam:string,param:string)=>{//从url中抽取key va
 }
 
 export const auth = ()=>{
-    const loggedIn = localStorage.getItem('token')
+    const loggedIn = sessionStorage.getItem('token')
     if ( !loggedIn) {
         return false
     } 

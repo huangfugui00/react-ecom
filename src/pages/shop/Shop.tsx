@@ -1,6 +1,5 @@
 import React, {useState,useEffect} from 'react'
 import  usePersistedState from '../../util/persistence'
-import {usePersistentState} from 'react-persistent-state'
 import { RouteComponentProps} from "react-router-dom";
 import Categories from './Categories'
 import TagButton from './TagButton'
@@ -9,6 +8,7 @@ import Filters from './Filters'
 import Products from './Products'
 import {productType} from '../../App'
 import productServices from '../../services/product'
+import favoriteServices from '../../services/favorite'
 import {getQuery} from '../../util/util'
 import './Shop.scss'
 
@@ -37,6 +37,7 @@ type shopProp ={
 
 const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
     useEffect(() => {
+        //shop page
         async function fectProducts(){
             const result =  await productServices.getProducts()
             if(result.status===1){
@@ -61,23 +62,40 @@ const Shop = ({location}: RouteComponentProps<shopProp>) : JSX.Element => {
                 setProducts(productsFromApi)
             }
         }
-        if(products.length==0){
+        if(location.pathname.startsWith('/shop')&&products.length==0){
             fectProducts()
         }
     }, [])
 
+    useEffect(() => {
+        //favorite page
+        const fectFavorites = async()=>{
+            const result = await favoriteServices.getFavorites()
+            if(result.status===1){
+                const data = result.data
+                let productId:string[]=[]
+                for(let i = 0 ;i<data.length;i++){
+                    productId.push(data[i].productId)
+                }
+                const favoriteProducts = products.filter(product=>productId.includes(product._id))
+                setProducts(favoriteProducts)
+            }
+        }
+        if(location.pathname.startsWith('/favorite')){
+            fectFavorites()
+        }
+    }, [])    
+
     useEffect(()=>{
         if(location){
-           const categorySel =  getQuery(location.search,'category')
-           if(categorySel!==null){
+             const categorySel =  getQuery(location.search,'category')
+            if(categorySel!==null){
                 setCategorySel(categorySel)
-           }
+            }
         }
     },[])
 
-    // const [products,setProducts] = usePersistentState([] as productType[])
     const [products,setProducts] = usePersistedState('products',[] as productType[])
-    // const [products,setProducts] = useState([] as productType[])
 
     const [displaySearch,setDisplaySearch ] = useState('none')
     const [displayFilters,setDisplayFilters ] = useState('none')
