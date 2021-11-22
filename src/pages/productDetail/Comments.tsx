@@ -5,6 +5,7 @@ import config from '../../config/config'
 import {userContext} from '../../App'
 import commentServices  from '../../services/comment'
 import Alert from '../../components/Alert'
+import Rating from '@mui/material/Rating';
 import './Comments.scss'
 
 
@@ -73,7 +74,7 @@ const AddComment = ({productId,addCommentEvent}:addCommentProp)=>{
     const [alertMessage,setAlertMessage]=useState('')
     const {user} = useContext(userContext)
     const arr = [1,2,3,4,5]
-    const [star,setStar] = useState(5)
+    const [star,setStar] = useState(5 as number)
     const [text,setText] = useState('')
     const history = useHistory();
 
@@ -105,11 +106,15 @@ const AddComment = ({productId,addCommentEvent}:addCommentProp)=>{
         <div className="comments-addcomment">
             <h3>Add a review</h3>
             <span className="d-flex gap-2" >Your Rating:  
-               {
-                   arr.map(x=>
-                    <i className={x<=star?'bi bi-star-fill':'bi bi-star'}
-                    onClick={()=>setStar(x)}></i>)
-               }
+            <Rating
+                className="rate"
+                name="simple-controlled"
+                value={star}
+                onChange={(event,newValue) => {
+                    if(newValue)
+                    setStar(newValue);
+                }}
+            />
             </span>
             <form onSubmit={postComment}>
                 <textarea placeholder="hello" value={text} onChange={(e)=>setText(e.target.value)}></textarea>

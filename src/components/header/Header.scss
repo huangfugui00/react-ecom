@@ -30,7 +30,6 @@
                 }
             }
 
-
         }
     }
 }
@@ -43,6 +42,13 @@
             cursor: pointer;
         }
     }
+    #cart-icon{
+        font-size:2rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
 }
 
 .a-header-item {

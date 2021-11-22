@@ -3,7 +3,8 @@ import './accountMenu.scss'
 import {Link} from 'react-router-dom'
 import config from '../../config/config'
 import IconText from '../../components/IconText'
-import MyMenu from './MyMenu'
+import Avatar from '@mui/material/Avatar'; 
+import MyMenu from '../MyMenu'
 
 type AccountMenuProp = {
     userName:string,
@@ -16,11 +17,14 @@ const AccountMenu = ({userName,avatar}:AccountMenuProp) => {
     const closeEvent = ()=>{setIsClick(false)}
     return (
         <div className="account-menu" >
-            <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar" onClick={()=>setIsClick(!isClick)} />
+            {avatar?<img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar" onClick={()=>setIsClick(!isClick)}/>
+            :<Avatar id="avatar" onClick={()=>setIsClick(!isClick)}>{userName}</Avatar>}
+
             <MyMenu open={isClick} closeEvent={closeEvent} >
                 <Link to='/' className="my-link">
                     <div className="icon-text d-flex gap-2 align-items-center"  >
-                        <img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar"/>
+                        {avatar?<img src={`${config.api}/${avatar}`} id="avatar" alt="Avatar"/>
+                        :<Avatar id="avatar">{userName}</Avatar>}
                         <span>{userName}</span>
                     </div>
                 </Link>

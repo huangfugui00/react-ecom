@@ -84,9 +84,10 @@ const ProductDetail = ({ match,history }: RouteComponentProps<productDetailProp>
                 <TagButtons setTagButtonSel={setTagButtonSel} tagButtonSel={tagButtonSel}/>
                 <TagContent tagButtonSel={tagButtonSel} product = {product} comments={comments} addCommentEvent={addCommentEvent}/>
             </div> 
-            <div id="product-detail-best-seller">
+            <BestSeller bestSellers={bestSellers}/>
+            {/* <div id="product-detail-best-seller">
                 <BestSeller bestSellers={bestSellers}/>
-            </div>    
+            </div>     */}
         </div>
     )
 

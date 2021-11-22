@@ -58,3 +58,22 @@
         }
     }
 }
+
+
+.quick-view{
+    background-color: white;
+    @extend .my-container;
+    #product-detail-content{
+        margin-top:6rem;
+        gap:5rem 0;
+    }
+
+    #product-detail-data{
+        margin-top:6rem;
+    }
+
+    #product-detail-best-seller{
+        margin-top:6rem;
+        margin-bottom: 10rem;
+    }
+}

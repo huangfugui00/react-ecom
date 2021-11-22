@@ -2,9 +2,10 @@ import React,{useState} from 'react'
 import Modal from '@mui/material/Modal';
 import {productType} from '../App'
 import config from '../config/config'
-import QuickView from '../components/quickView/QuickView'
-import {Link} from 'react-router-dom'
 import './Product.scss'
+import ProductImage from '../pages/productDetail/ProductImage'
+import ProductIntro from '../pages/productDetail/ProductIntro'
+import QuickView from '../components/quickView/QuickView'
 
 
 type productProp={
@@ -16,6 +17,10 @@ type modalProp = {
     setOpen:(open:boolean)=>void,
     product:productType
 }
+
+
+
+
 
 const ModalProduct = ({open,setOpen,product}:modalProp)=>{
     return( 
@@ -30,7 +35,7 @@ const ModalProduct = ({open,setOpen,product}:modalProp)=>{
 
 }
 
-const Product = ({product}:productProp):JSX.Element => {
+const Product = ({product}:productProp) => {
     const [open,setOpen ]= useState(false)
 
     return (
@@ -54,6 +59,7 @@ const Product = ({product}:productProp):JSX.Element => {
             <div id="component-product-price" className="d-flex">
                 <span>{`$${product.price}`}</span>
             </div>        
+            {/* <QuickView product={product} open={open} closeEvent={()=>setOpen(false)}/> */}
             <ModalProduct open={open} setOpen={setOpen} product={product}/>
         </div>
     )

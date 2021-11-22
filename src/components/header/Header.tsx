@@ -1,15 +1,36 @@
-import React,{useContext} from 'react';
+import React,{useContext,useState,useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import {userContext} from '../../App'
 import defaultAvatar from '../../assests/images/icons/logo-01.png'
 import IconText from '../../components/IconText'
-import UserMenu from './UserMenu'
+import Badge from '@mui/material/Badge';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import AccountMenu from './AccountMenu'
+import CartDrawer from './CartDrawer'
+import cartServices from '../../services/cart'
+import {cartProductType} from '../../pages/shopCart/ShopCart'
 import './Header.scss';
 
 
 const Header = () : JSX.Element => {
     const {user}= useContext(userContext)
+    const [showCart,setShowCart] = useState(false)
+    const [cartProducts,setCartProducts] = useState([] as cartProductType[])
+    
+    useEffect(() => {
+        const fetchCart = async()=>{
+            const result = await cartServices.getCart()        
+            if(result.status===1){
+                const cartsFromApi = result.data
+                for(let i = 0 ;i<cartsFromApi.length;i++){
+                    cartsFromApi[i].product = cartsFromApi[i].productId
+                }
+                setCartProducts(cartsFromApi)
+            }
+        }
+        fetchCart()
+    }, [])
+  
     return (
         <div>
             <header className="container-header">
@@ -47,17 +68,25 @@ const Header = () : JSX.Element => {
                         </ul>
                     </div>
                     {/* icon group */}
-                    <div className="col d-flex justify-content-end " id="iconHeader">
+                    <div className="col d-flex justify-content-end align-items-center" id="iconHeader">
                         <div className="row">
                            
-                            <div className="col  ">
-                                <i className="bi bi-search"></i>
+                            <div className="col"  >
+                            {user.islogin? <Badge id="badge" badgeContent={cartProducts.length} color="secondary" onClick={()=>setShowCart(!showCart)}>
+                                <ShoppingCartIcon id="cart-icon" color="action" />
+                            </Badge>:<></>}
+                           
+                            <CartDrawer
+                             showCart={showCart}
+                             closeEvent={()=>setShowCart(false)}
+                             cartProducts={cartProducts}
+                             setCartProducts={setCartProducts}
+                            />
                             </div>
                           
                             <div className="col">
                                 {
                                  user.islogin?  <AccountMenu userName={user.username} avatar={user.avatar}/>:
-                                //  user.islogin?  <AccountMenu userName={user.username} avatar={user.avatar}/>:
                                 <Link  to={"/login"} className="my-link">
                                     <IconText icon={'bi-person'} text={'Login'}/>
                                 </Link>
