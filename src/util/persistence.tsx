@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction } from 'react';
 function  usePersistedState<S>(key:string , defaultValue: S):[S,Dispatch<SetStateAction<S>>]{
     const [state, setState] = useState(
       () =>{
+    
         const item = sessionStorage.getItem(key)
         if(item){
           return JSON.parse(item)

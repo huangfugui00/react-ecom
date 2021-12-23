@@ -91,7 +91,6 @@ const Header = () : JSX.Element => {
                                     <IconText icon={'bi-person'} text={'Login'}/>
                                 </Link>
                                 }
-                                
                             </div>
  
                         </div>

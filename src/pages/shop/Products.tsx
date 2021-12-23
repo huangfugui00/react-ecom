@@ -12,7 +12,7 @@ const Products = ({products}:productsProp) : JSX.Element=> {
     return (
         <div className="shop-products row">
             {products.map(product => (
-                <div className="col-xl-3 col-sm-6" id="shop-products-product" >
+                <div className="col-xl-3 col-lg-4 col-sm-6" id="shop-products-product" >
                     <Product product={product}/>
                 </div>
             ))}
